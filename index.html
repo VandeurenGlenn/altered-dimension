@@ -246,6 +246,7 @@
         z-index: 100;
         box-sizing: border-box;
         padding: 8px 42px;
+        height: 100%;
         /* height: 420px; */
         /* position: fixed;
         top: 0;
@@ -257,7 +258,7 @@
         min-width: 146px;
       }
       custom-logo {
-        max-width: 146px;
+        /* max-width: 146px; */
       }
       button.explore, .big-title {
         font-size: 28px;
@@ -315,11 +316,11 @@
         border-radius: 24px;
         border: 1px solid #cd7513;
       }
-
+      .column1 {
+        height: 100%;
+        max-height: 640px;
+      }
       @media (max-width: 960px) {
-         header {
-           flex-direction: column !important;
-         }
          .nav {
            height: 0;
            width: 0;
@@ -332,49 +333,42 @@
          section {
            padding-top: 16px;
          }
-         header .row1 {
-           height: 100%;
-           flex-direction: column !important;
-         }
-      }
-      busy-animation {
-        background: #499ded;
-        position: absolute;
-    top: 58px;
-    height: 416px;
-    width: 416px;
       }
     </style>
     <header class="column center-center" style="position: sticky;">
-    <span class="flex"></span>
-      <span class="row row1 center-center">
+      <span class="column column1 center-center">
         <h2>Virtual reality</h2>
         <!-- <busy-animation></busy-animation> -->
+        <span class="flex"></span>
         <custom-logo src="logo-in.png"></custom-logo>
+        
+        <span class="flex"></span>
         <span class="row">
           <a href="#vr" class="services-button">vr laser</a>
           <a href="#vr" class="services-button">vr arcade</a>
         </span>
         <!-- <a href="#vr">vr escape</a> -->
       </span>
-      <span class="flex"></span>
-      <span class="toolbar row center-center nav" style="width: 100%;">
-        <span class="row">
-          <span class="flex"></span>
-          <a href="#home">home</a>
-          <span class="flex"></span>
-          <a href="#about">about</a>
-          <span class="flex"></span>
-          <a href="#services">services</a>
-          <span class="flex"></span>
-          <a href="#book">book</a>
-          <span class="flex"></span>
-          <a href="#contact">contact</a>
-          <span class="flex"></span>
-        </span>
+      <!-- <span class="toolbar row center-center nav" style="width: 100%;"> -->
+        
     </header>
 
     </span>
+    <custom-drawer>
+      <span class="column" slot="content">
+        <span class="flex"></span>
+        <a href="#home">home</a>
+        <span class="flex"></span>
+        <a href="#about">about</a>
+        <span class="flex"></span>
+        <a href="#services">services</a>
+        <span class="flex"></span>
+        <a href="#book">book</a>
+        <span class="flex"></span>
+        <a href="#contact">contact</a>
+        <span class="flex"></span>
+      </span>
+    </custom-drawer>
     <main>
       <section data-route="home" class="row center-center home">
         <custom-container class="row center-center">
@@ -515,16 +509,16 @@
     <script>
     let lastScroll = 0
       document.querySelector('body').addEventListener('scroll', ({target}) => {
-        const nav = document.querySelector('.nav')
+
         const main = document.querySelector('main')
         const header = document.querySelector('header')
         const logo = document.querySelector('custom-logo')
         // console.log(target.scrollTop);
-
+        
+        if (outerWidth > 960) return;
         // console.log(ratio);
         if (target.scrollTop > 100) {
-          nav.style.opacity = 0
-          nav.style.height = 0;
+        
           // logo.style.transform = `scale(0.3) translateX(-${target.scrollTop}px)`;
           return
         }
@@ -553,13 +547,8 @@
         }
         if (target.scrollTop === 0) {
           logo.style.transform = 'scale(1)';
-          nav.style.height = '64px';
-          nav.style.opacity = 1
           return
         }
-        // logo.style.transform = `scale(${ratio / 100})`;
-        // nav.style.transform = `translateY(-${target.scrollTop}px)`;
-        // main.style.transform = `translateY(-${target.scrollTop}px)`;
 
 
       }, {passive: true})
