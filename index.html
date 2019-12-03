@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The Altered Dimension, Beleef een onvergetelijk avontuur in een van de virtuele werelden. Ga op pad en verken de mooiste/gestoorde werelden\nThe Altered Dimension is de ideale groep/teambuild activiteit!">
+    <title>The Altered Dimension</title>
+  </head>
+  <body>
+    <!-- <script src="./../node_modules/@vandeurenglenn/custom-container/custom-container.js" type="module" charset="utf-8"></script>
+    <script src="./../node_modules/custom-input/custom-input.js" type="module" charset="utf-8"></script> -->
+    <script>
+
+    customElements.define('custom-logo', class CustomLogo extends HTMLElement {
+      static get observedAttributes() { return ['src']; }
+
+      set src(value) {
+        this.img.src = value
+      }
+
+      get img() {
+        return this.shadowRoot.querySelector('img')
+      }
+      
+      get spinner() {
+        return this.shadowRoot.querySelector('.spinner')
+      }
+
+      constructor() {
+        super();
+        
+        this._onload = this._onload.bind(this)
+        this._resize = this._resize.bind(this)
+
+        this.attachShadow({mode: 'open'})
+        this.shadowRoot.innerHTML = `
+        <style>
+          :host {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 8px 16px;
+            align-items: center;
+            box-sizing: border-box;
+          }
+
+          .spinner {
+            padding: 8px 16px;
+            box-sizing: border-box;
+            position: absolute;
+            border: 16px solid transparent;
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+          }
+
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        
+          img {
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+          }
+        </style>
+        <img></img>
+        <span class="spinner">
+
+        </span>
+        `
+      }
+      connectedCallback() {
+        
+        this.img.addEventListener('load', this._onload)
+        if (this.hasAttribute('src')) this.src = this.getAttribute('src')
+        window.addEventListener('resize', this._resize)
+        this._resize()
+      }
+      _onload() {
+        this._resize()
+      }
+      _resize() {
+        const { width, height } = this.img.getBoundingClientRect()
+        this.spinner.style.width = `${width}px`;
+        this.spinner.style.height = `${height}px`;
+      }
+      attributeChangedCallback(name, old, value) {
+        if (old !== value) this[name] = value
+      }
+    })
+
+      customElements.define('custom-container', class CustomContainer extends HTMLElement {
+        constructor() {
+          super();
+
+          this.attachShadow({mode: 'open'})
+          this.shadowRoot.innerHTML = `
+          <style>
+            :host {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              overflow: hidden;
+              width: 100%;
+              height: 100%;
+            }
+            :host([row]) {
+              flex-direction: row;
+            }
+            @media (min-width: 640px) {
+              ::slotted(*) {
+                max-width: 640px;
+              }
+            }
+          </style>
+          <slot></slot>
+          `
+        }
+      })
+
+      class CustomInput extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({mode: 'open'});
+          this.shadowRoot.innerHTML = this.template;
+        }
+        set type(val) {
+          this.input.setAttribute('type', val);
+        }
+        set placeholder(val) {
+          this.input.setAttribute('placeholder', val);
+        }
+        set value(val) {
+          this.input.setAttribute('value', val);
+        }
+        get input() {
+          return this.shadowRoot.querySelector('input');
+        }
+        get value() {
+          return this.input.value;
+        }
+        addListener(name, cb) {
+          if(name === 'input' || name === 'change') {
+            this.input.addEventListener(name, cb);
+          } else {
+            this.addEventListener(name, cb);
+          }
+        }
+        get template() {
+          return `
+            <style>
+              :host {
+                display: block;
+                height: var(--custom-input-height, 48px);
+                background: var(--custom-input-background, transparent);
+                width: 100%;
+                box-shadow: 0px 1px 3px -1px #333;
+                min-width: 240px;
+              }
+              input {
+                --webkit-visibility: none;
+                border: none;
+                background: transparent;
+                height: var(--custom-input-height, 48px);
+                width: 100%;
+              }
+            </style>
+            <slot name="before"></slot>
+            <input></input>
+            <slot name="after"></slot>
+          `;
+        }
+      };
+      customElements.define('custom-input', CustomInput)
+    </script>
+    <style>
+      html, body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      html {overflow: hidden;}
+      body {
+        margin: 0;
+        background: url(achtergrond.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        background-position: center;
+        overflow: scroll !important;
+        --custom-input-background: #cd7513;
+      }
+      main {
+        /* overflow: auto; */
+        /* position: absolute;
+        bottom: 0;
+        top: 210px;
+        left: 0;
+        right: 0; */
+      }
+      header, section {
+        background: #000;
+      }
+      .flex {
+        flex: 1;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+      .center-center {
+        align-items: center;
+        justify-content: center;
+      }
+      .toolbar {
+        height: 64px;
+        background: #00000005;
+      }
+      a {
+        font-size: 22px;
+        text-decoration: none;
+        color: inherit;
+        padding: 8px 16px
+      }
+      a, h1, h2, h3, h4 {
+        text-transform: uppercase;
+        margin: 0;
+      }
+      .group {
+        background: #cd7513;
+      }
+      iframe {
+        height: 640px;
+        width: 100%;
+      }
+      header {
+        z-index: 100;
+        box-sizing: border-box;
+        padding: 8px 42px;
+        /* height: 420px; */
+        /* position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0; */
+      }
+      header h2 {
+        min-width: 146px;
+      }
+      custom-logo {
+        max-width: 146px;
+      }
+      button.explore, .big-title {
+        font-size: 28px;
+      }
+      button {
+
+      }
+      button.explore {
+        height: 64px;
+        text-transform: uppercase;
+        border-radius: 12px;
+        background: #1d405a;
+        color: #fff;
+      }
+      section {
+        padding: 36px 24px;
+      }
+      custom-container {
+        max-width: 960px;
+        align-items: center;
+        justify-content: center;
+      }
+      .map {
+        padding: 0;
+      }
+      .column.welcome {
+        padding-right: 24px;
+      }
+      .vertical-line {
+        border-right: 1px solid #eee;
+        display: block;
+        height: 100%;
+        width: 1px;
+      }
+      .nav .row {
+        width: 100%;
+        max-width: 960px;
+      }
+      .hide {
+        opacity: 0;
+        background: transparent !important;
+      }
+      section.home {
+
+      }
+      custom-container {
+        max-width: 796px;
+      }
+      iframe {
+        min-height: 644px
+      }
+      .services-button {
+        /* color: #cd7513; */
+        color: #fff;
+        border-radius: 24px;
+        border: 1px solid #cd7513;
+      }
+
+      @media (max-width: 960px) {
+         header {
+           flex-direction: column !important;
+         }
+         .nav {
+           height: 0;
+           width: 0;
+           opacity: 0 !important;
+         }
+         custom-logo {
+           padding: 0 8px 16px 8px;
+           max-width: 100%;
+         }
+         section {
+           padding-top: 16px;
+         }
+         header .row1 {
+           height: 100%;
+           flex-direction: column !important;
+         }
+      }
+      busy-animation {
+        background: #499ded;
+        position: absolute;
+    top: 58px;
+    height: 416px;
+    width: 416px;
+      }
+    </style>
+    <header class="column center-center" style="position: sticky;">
+    <span class="flex"></span>
+      <span class="row row1 center-center">
+        <h2>Virtual reality</h2>
+        <!-- <busy-animation></busy-animation> -->
+        <custom-logo src="logo-in.png"></custom-logo>
+        <span class="row">
+          <a href="#vr" class="services-button">vr laser</a>
+          <a href="#vr" class="services-button">vr arcade</a>
+        </span>
+        <!-- <a href="#vr">vr escape</a> -->
+      </span>
+      <span class="flex"></span>
+      <span class="toolbar row center-center nav" style="width: 100%;">
+        <span class="row">
+          <span class="flex"></span>
+          <a href="#home">home</a>
+          <span class="flex"></span>
+          <a href="#about">about</a>
+          <span class="flex"></span>
+          <a href="#services">services</a>
+          <span class="flex"></span>
+          <a href="#book">book</a>
+          <span class="flex"></span>
+          <a href="#contact">contact</a>
+          <span class="flex"></span>
+        </span>
+    </header>
+
+    </span>
+    <main>
+      <section data-route="home" class="row center-center home">
+        <custom-container class="row center-center">
+        <!-- <span class="flex"></span> -->
+          <span class="column welcome">
+          <span class="row" style="width: 100%;">
+          <span class="flex"></span>
+            <h1 class="big-title">welcome</h1>
+          <span class="flex"></span>
+
+          </span>
+            <h3>to the altered dimension</h3>
+          </span>
+          <!-- <span class="flex"></span> -->
+        </custom-container>
+      </section>
+      <span class="toolbar row"></span>
+      <section id="vr" class="row center-center">
+        <custom-container class="row" style="justify-content: center; align-items: center;">
+        <span class="column">
+          <img src="" alt="">
+          <button>VR. Arcade</button>
+          <p>Beleef een onvergetelijk avontuur in een van de virtuele werelden. Ga op pad en verken de mooiste of de meest gestoorde werelden</p>
+        </span>
+        <span class="column">
+          <img src="" alt="">
+          <button>VR. Escape</button>
+          <p>Raak jij op tijd uit onze Virtual Reality escape rooms?</p>
+        </span>
+        <span class="column">
+          <img src="" alt="">
+          <button>VR. Laser Game</button>
+          <p>Stap met 4 spelers tegelijk  in de wereld van Tower Tag om een rondje laser schieten te spelen.</p>
+        </span>
+      </custom-container>
+    </section>
+      <section class="group column center-center">
+        <custom-container>
+          <span class="row" style="width: 100%;max-width: 100% !important">
+            <span class="column">
+              <h2>VR</h2>
+              <h2>Groepuitjes</h2>
+            </span>
+          </span>
+
+          <!-- <span class="row"> -->
+            <p style="max-width: 100% !important;">Virtual Reality staat voor plezier. De ervaring van het ontdekken van nieuwe dingen. Het gevoel van iets voor de eerste keer te beleven. Het laat het kind weer naar boven komen. Om iedereen een zo goed mogelijke experience op te laten kunnen doen kan je Bij ons terecht tot maximaal 12 personen voor een groepsuitje. Je kan met 4 personen toegang krijgen tot dezelfde Virtuele wereld</p>
+            <img>
+          <!-- </span> -->
+          <p style="max-width: 100% !important;">Door de wetenschap achter de Technologie van VR is een Teambuilding activiteit ontzettend goed voor een bedrijfsuitje of een feestje. Het zorgd voor een verhoogd bewustzijn met gevolg voor menselijk interactie gedrag. Waardoor je een betere band krijgt met de mensen rond je. Het biedt de mogelijkheid om op een rustige manier iets aan te brengen wat anders veel lastiger is. Het is geschikt om op een leuke manier te werken aan je teamwork skills je creativiteit te boosten en je communicatie skills aan te scherpen.</p>
+
+          <button>boeken</button>
+          <button>info</button>
+        </custom-container>
+      </section>
+
+      <section class="column center-center">
+        <custom-container>
+          <h2 style="max-width: 100% !important; width: 100%;">pak jij de high score?</h2>
+          <p style="max-width: 100% !important;">Bij ons doe je automatisch mee aan het competitiesysteem waar je mooie prijzen mee kan winnen. Zoals B.V. de beste score van de maand krijgt de volgende maand een gratis experiance van een uur.</p>
+
+          <p style="max-width: 100% !important;">Is je vriend of collega aan het spelen? Zet je dan lekker neer in onze zetels met een drankje of een snackje en kijk gezellig mee naar wat je vrienden of collega's aan het spelen zijn.</p>
+          <!-- <h4 style="max-width: 100% !important;">Pak jij de Highscore van de maand?</h4> -->
+
+          <!-- <button type="button" name="button">boeken</button>
+          <button type="button" name="button">info</button> -->
+        </custom-container>
+      </section>
+      <span class="toolbar row"></span>
+      <section id="contact" class="column center-center">
+        <custom-container>
+          <span class="row">
+            <span class="column">
+              <h4>voornaam</h4>
+              <custom-input><custom-input>
+            </span>
+
+            <span class="column">
+              <h4>achternaam</h4>
+              <custom-input><custom-input>
+            </span>
+          </span>
+
+          <span class="row">
+            <span class="column">
+              <h4>email</h4>
+              <custom-input><custom-input>
+            </span>
+
+            <span class="column">
+              <h4>telefoon</h4>
+              <custom-input><custom-input>
+            </span>
+          </span>
+        </custom-container>
+      </section>
+
+      <span class="row toolbar"></span>
+
+      <section id="map" class="map">
+        <iframe class="route-info" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Koning+Albertstraat+43,+3290+Diest&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+      </section>
+      <footer>
+        <custom-container>
+          <span class="row">
+            <span class="column">
+              <h1>The Altered Dimension</h1>
+
+              <p>Koning Albertstraat 43</p>
+              <p>3290 Diest</p>
+
+              <p>info@thealtereddimension.be</p>
+              <p>0493/920252</p>
+            </span>
+
+            <span class="column">
+              <h3>openingstijden</h3>
+              <p>maandag gesloten</p>
+              <p>dinsdag gesloten</p>
+              <p>woensdag 12:00 - 20:00</p>
+              <p>donderdag - 10:00 - 20:00</p>
+              <p>vrijdag - 13:00 - 22:00</p>
+              <p>zaterdag - 13:00 - 22:00</p>
+              <p>zondag - 10:00 - 18:00</p>
+            </span>
+          </span>
+
+          <span class="row">
+            facebook
+            instagram
+          </span>
+        </custom-container>
+
+        <small>c The Altered Dimension</small>
+      </footer>
+    </main>
+
+    <script>
+    let lastScroll = 0
+      document.querySelector('body').addEventListener('scroll', ({target}) => {
+        const nav = document.querySelector('.nav')
+        const main = document.querySelector('main')
+        const header = document.querySelector('header')
+        const logo = document.querySelector('custom-logo')
+        // console.log(target.scrollTop);
+
+        // console.log(ratio);
+        if (target.scrollTop > 100) {
+          nav.style.opacity = 0
+          nav.style.height = 0;
+          // logo.style.transform = `scale(0.3) translateX(-${target.scrollTop}px)`;
+          return
+        }
+        if (target.scrollTop > 75) {
+        // main.style.transform = `translateY(${target.scrollTop}px)`;
+        // header.style.transform = `translateY(-${target.scrollTop}px)`;
+          // logo.style.transform = `scale(0.3) translateX(-${target.scrollTop}px)`;
+          logo.style.transform = `scale(0.4) translateY(-${target.scrollTop / 100}px)`;
+          // header.style.position = 'fixed'
+          return
+        }
+        if (target.scrollTop > 50) {header.style.position = 'fixed'
+        // main.style.transform = `translateY(${target.scrollTop}px)`;
+        // header.style.transform = `translateY(-${target.scrollTop}px)`;
+          // logo.style.transform = `scale(0.6) translateX(-${target.scrollTop}px)`;
+          logo.style.transform = `scale(0.6) translateY(-${target.scrollTop / 100}px)`;
+          header.style.position = 'sticky'
+          return
+        }
+        if (target.scrollTop > 25) {
+        // main.style.transform = `translateY(${target.scrollTop}px)`;
+        // header.style.transform = `translateY(-${target.scrollTop}px)`;
+          // logo.style.transform = `scale(0.6) translateX(-${target.scrollTop}px)`;
+          logo.style.transform = `scale(0.8) translateY(-${target.scrollTop / 100}px)`;
+          return
+        }
+        if (target.scrollTop === 0) {
+          logo.style.transform = 'scale(1)';
+          nav.style.height = '64px';
+          nav.style.opacity = 1
+          return
+        }
+        // logo.style.transform = `scale(${ratio / 100})`;
+        // nav.style.transform = `translateY(-${target.scrollTop}px)`;
+        // main.style.transform = `translateY(-${target.scrollTop}px)`;
+
+
+      }, {passive: true})
+    </script>
+  </body>
+</html>
