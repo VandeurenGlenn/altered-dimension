@@ -254,7 +254,7 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
     (async () => {
       await import('./custom-drawer-b43c6f3e.js');
       // await customElements.whenDefined('custom-drawer')
-      await import('./custom-page-controller-241b22d8.js');
+      await import('./custom-page-controller-1c0da1aa.js');
       
       console.log(this.shadowRoot);
       window.go = this.go;
