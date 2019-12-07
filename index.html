@@ -242,6 +242,11 @@
         box-shadow: 0 3px 5px -1px #3498db52,
                     0 3px 5px 2px #3498db52;
       }
+      custom-drawer [slot="header"] {
+        background: #000;
+        box-shadow: -2px -1px 0px -1px #ffffff52,
+                    -3px -1px 0px 2px #ffffff52;
+      }
       altered-app[drawer-open] custom-drawer {
         opacity: 1;
         transform: translate(0);
@@ -443,10 +448,17 @@
       </custom-pages>
       <footer>
         <span class="row center">
-          <custom-divider style="border-bottom: 5px solid #03A9F4;"></custom-divider>
-          <span class="row base"><h1 style="padding-left: 16px; font-size:80px;">V</h1><h1 style="text-transform: lowercase; text-align: center;">irtual</h1><h1 style="padding-left: 16px; font-size:80px;">R</h1><h1 style="padding-right: 16px;text-transform: lowercase; text-align: center;">eality</h1>
+          <custom-divider style="border-bottom: 5px solid #3366CC;"></custom-divider>
+          <span class="column" style="text-align: right; padding: 0 16px;">
+            <span class="row base">
+              <h1 style="font-size:80px;">V</h1>
+              <h1 style="text-transform: lowercase; text-align: center;">irtual</h1>
+              <h1 style="padding-left: 16px; font-size:80px;">R</h1>
+              <h1 style="text-transform: lowercase; text-align: center;">eality</h1>
+            </span>
+            <h4>thealtereddimension.be</h4>
           </span>
-          <custom-divider style="border-bottom: 5px solid #03A9F4;"></custom-divider>
+          <custom-divider style="border-bottom: 5px solid #3366CC;"></custom-divider>
         </span>
 
         <small>c The Altered Dimension</small>
