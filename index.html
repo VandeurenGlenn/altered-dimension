@@ -11,16 +11,15 @@
         left: 0;
         bottom: 0;
         right: 0;
+        overflow: hidden;
       }
       html {
-        overflow: hidden;
         background: #000;
       }
       body {
         margin: 0;
         color: #fff;
         background-position: center;
-        overflow: scroll !important;
         font-family: sans-serif;
         -webkit-font-smoothing: antialiased;
         --custom-drawer-color: #fff;
@@ -168,6 +167,7 @@
         left: 16px;
     top: 12px;
     z-index: 101;
+    pointer-events: auto;
     /* --svg-icon-size: 36px; */
       }
       .brand-logo {
@@ -177,8 +177,8 @@
       custom-pages {
         position: absolute;
         top: 64px;
+        bottom: 120px;
         left: 0;
-        bottom: 0;
         right: 0;
       }
       @media (max-width: 640px) {
@@ -276,9 +276,18 @@
       [custom-submenu][opened] custom-svg-icon {
         transform: rotate(90deg);
       }
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+      }
+      .base {
+        align-items: baseline;
+      }
     </style>
-    
-  <link rel="modulepreload" href="selector-mixin-a6a7b665.js"><link rel="modulepreload" href="custom-svg-iconset-01f346e8.js"><link rel="modulepreload" href="custom-svg-icon-b3b9700f.js"><link rel="modulepreload" href="custom-drawer-b43c6f3e.js"><link rel="modulepreload" href="custom-page-controller-1c0da1aa.js"></head>
+  <link rel="modulepreload" href="selector-mixin-a6a7b665.js"><link rel="modulepreload" href="custom-svg-iconset-01f346e8.js"><link rel="modulepreload" href="custom-svg-icon-b3b9700f.js"><link rel="modulepreload" href="custom-drawer-b43c6f3e.js"><link rel="modulepreload" href="custom-page-controller-4a2d44bb.js"></head>
   <body>
     <altered-app>
       <custom-svg-icon icon="menu" class="drawer-menu-icon"></custom-svg-icon>
@@ -354,7 +363,7 @@
             <button>info</button>
           </custom-container>
         </section>
-
+        <tower-tag-section data-route="tower-tag"></tower-tag-section>
         <section class="column center-center">
           <custom-container>
             <h2 style="max-width: 100% !important; width: 100%;">pak jij de high score?</h2>
@@ -395,13 +404,11 @@
             </span>
           </custom-container>
         </section>
-
-        <span class="row toolbar"></span>
-
         <section id="map" class="map">
           <iframe class="route-info" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Koning+Albertstraat+43,+3290+Diest&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
         </section>
-        <footer>
+        
+        <section data-route="openingstijden">
           <custom-container>
             <span class="row">
               <span class="column">
@@ -431,10 +438,19 @@
               instagram
             </span>
           </custom-container>
-
-          <small>c The Altered Dimension</small>
-        </footer>
+        </section>        
+        
       </custom-pages>
+      <footer>
+        <span class="row center">
+          <custom-divider style="border-bottom: 5px solid #03A9F4;"></custom-divider>
+          <span class="row base"><h1 style="padding-left: 16px; font-size:80px;">V</h1><h1 style="text-transform: lowercase; text-align: center;">irtual</h1><h1 style="padding-left: 16px; font-size:80px;">R</h1><h1 style="padding-right: 16px;text-transform: lowercase; text-align: center;">eality</h1>
+          </span>
+          <custom-divider style="border-bottom: 5px solid #03A9F4;"></custom-divider>
+        </span>
+
+        <small>c The Altered Dimension</small>
+      </footer>
     </altered-app>
 
     
