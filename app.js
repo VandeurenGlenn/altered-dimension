@@ -241,6 +241,10 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
     </custom-svg-iconset>
     <slot></slot>
     `;
+    (async () => {
+      await import('./custom-svg-iconset-01f346e8.js');
+      import('./custom-svg-icon-b3b9700f.js');
+    })();
   }
   
   connectedCallback() {
@@ -259,8 +263,7 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
       console.log(this.shadowRoot);
       window.go = this.go;
       if (!this.drawerSelected) go('home');
-      await import('./custom-svg-iconset-01f346e8.js');
-      await import('./custom-svg-icon-b3b9700f.js');
+      
   
     })();
   }
