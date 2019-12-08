@@ -11,12 +11,12 @@ var vrLaser = customElements.define('vr-laser-section', class VrLaserSection ext
     const lasers = [
       {
         title: 'Tower Tag',
-        img: 'tower-tag_thumb_360.jpg',
+        img: './tower-tag_thumb_360.jpg',
         route: 'tower-tag'
       },
       {
         title: 'Tower Tag',
-        img: 'tower-tag_thumb_360.jpg',
+        img: './tower-tag_thumb_360.jpg',
         route: 'tower-tag'
       }
     ];
@@ -131,15 +131,15 @@ var vrLaser = customElements.define('vr-laser-section', class VrLaserSection ext
         <custom-item-grid>
           <custom-grid-item data-route="tower-tag" data-route-info="games/vr-laser">
             <h2 slot="title">Tower Tag</h2>
-            <img slot="img" src="tower-tag_thumb_360.jpg"></img>
+            <img slot="img" src="./tower-tag_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item data-route="tower-tag" data-route-info="games/vr-laser">
           <h2 slot="title">Tower Tag</h2>
-            <img slot="img" src="tower-tag_thumb_360.jpg"></img>
+            <img slot="img" src="./tower-tag_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item data-route="tower-tag" data-route-info="games/vr-laser">
             <h2 slot="title">Tower Tag</h2>
-            <img slot="img" src="tower-tag_thumb_360.jpg"></img>
+            <img slot="img" src="./tower-tag_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item>
             <h2 slot="title">More Comming Soon</h2>

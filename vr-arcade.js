@@ -51,12 +51,12 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
     const arcades = [
       {
         title: 'Arizona Sunshine',
-        img: 'arizona-sunshine_thumb_360.jpg',
+        img: './arizona-sunshine_thumb_360.jpg',
         route: 'arizona-sunshine'
       },
       {
         title: 'Arizona Sunshine',
-        img: 'arizona-sunshine_thumb_360.jpg',
+        img: './arizona-sunshine_thumb_360.jpg',
         route: 'arizona-sunshine'
       }
     ];
@@ -172,15 +172,15 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
         <custom-item-grid>
           <custom-grid-item>
             <h2 slot="title">Arizona Sunshine</h2>
-            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+            <img slot="img" src="./arizona-sunshine_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item>
           <h2 slot="title">Arizona Sunshine</h2>
-            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+            <img slot="img" src="./arizona-sunshine_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item>
             <h2 slot="title">Arizona Sunshine</h2>
-            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+            <img slot="img" src="./arizona-sunshine_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item>
             <h2 slot="title">More Comming Soon</h2>

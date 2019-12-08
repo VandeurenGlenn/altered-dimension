@@ -21,6 +21,8 @@ var openingHours = customElements.define('opening-hours-section', class OpeningH
         flex: 1;
       }
     </style>
+    <custom-container>
+    <h1>openingstijden</h1>
     <p>Onze walk-in uren zijn de uren waar je vrije toegang 
 krijgt tot The Altered Dimension.</p>
 
@@ -36,28 +38,23 @@ Maar wel enkel op reservatie.</p>
       <span class="flex"></span>
       
     </span>
-    <span class="row"  style="width:100%;max-width: 640px;">
-    <span class="column">
-    <p>
-    Maandag
-    </p>  <p>
-Dinsdag
-</p>  <p>
-Woensdag
-</p>  <p>
-Donderdag
-</p>  <p>
-Vrijdag
-</p>  <p>
-Zaterdag
-</p>  <p>
-Zondag</p>
+    <span class="column" style="width: 100%;">
+      <span class="row" style="width: 100%;">
+        <h4>maandag</h4>
+        <span class="flex"></span>
+        <h4>gesloten</h4>
+      </span>
+      
+      <span class="row" style="width: 100%;">
+        <h4>dinsdag</h4>
+        <span class="flex"></span>
+        <h4>16:00 - 20:00</h4>
+      </span>
     </span>
 
 <span class="flex"></span>
 
   <span class="column">
-  
   <p>
   
 16:00 tot 20:00
@@ -76,6 +73,7 @@ Zondag</p>
 </span>
 
     </span>
+    </custom-container>
     `
   }
 });

@@ -21,29 +21,44 @@ var games = customElements.define('games-section', class GamesSection extends HT
     const arcades = [
       {
         title: 'Arizona Sunshine',
-        img: 'arizona-sunshine_thumb_360.jpg',
+        img: './arizona-sunshine_thumb_360.jpg',
         route: 'arizona-sunshine'
       },
       {
         title: 'Arizona Sunshine',
-        img: 'arizona-sunshine_thumb_360.jpg',
+        img: './arizona-sunshine_thumb_360.jpg',
         route: 'arizona-sunshine'
       }
     ];
     
     this.setupGrid(this.arcadeGrid, arcades, 'games/vr-arcade');
+    
+  
+    
+    const lasers = [
+      {
+        title: 'Tower Tag',
+        img: './tower-tag_thumb_360.jpg',
+        route: 'tower-tag'
+      },
+      {
+        title: 'Tower Tag',
+        img: './tower-tag_thumb_360.jpg',
+        route: 'tower-tag'
+      }
+    ];
         
-    this.setupGrid(this.laserGrid, arcades, 'games/vr-laser');
+    this.setupGrid(this.laserGrid, lasers, 'games/vr-laser');
     
     const escapes = [
       {
         title: 'Escape Room',
-        img: 'arizona-sunshine_thumb_360.jpg',
+        img: './arizona-sunshine_thumb_360.jpg',
         route: 'tower-tag'
       },
       {
         title: 'Escape Room',
-        img: 'arizona-sunshine_thumb_360.jpg',
+        img: './arizona-sunshine_thumb_360.jpg',
         route: 'tower-tag'
       }
     ];
