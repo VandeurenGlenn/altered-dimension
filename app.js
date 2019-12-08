@@ -469,10 +469,15 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
   get drawerSelected() {
     return this.drawer.querySelector('custom-menu').selected
   }
+  get pageController() {
+    return this.shadowRoot.querySelector('custom-page-controller')
+  }
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
     this.go = this.go.bind(this);
+    this._onhashChange = this._onhashChange.bind(this);
+    
     this.shadowRoot.innerHTML = `
     <style>
      :host {
@@ -500,36 +505,61 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
   
   connectedCallback() {
     if (super.connectedCallback) super.connectedCallback();
+    this.addEventListener('mouse-up', event => {
+      if (event.srcElement.hasAttribute('custom-submenu')) return;
+      if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
+      else this.setAttribute('drawer-open', '');
+    });
+    this.drawer.addEventListener('click', event => {
+      if (event.srcElement.hasAttribute('custom-submenu')) return;
+      if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
+      else this.setAttribute('drawer-open', '');
+    });
     
     this.drawerToggle.addEventListener('click', () => {
       if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
       else this.setAttribute('drawer-open', '');
     });
-    console.log('eee');
+    
     (async () => {
       await import('./custom-drawer-b43c6f3e.js');
       // await customElements.whenDefined('custom-drawer')
-      await import('./custom-page-controller-4a2d44bb.js');
-      
-      console.log(this.shadowRoot);
+      await import('./custom-page-controller-dbb204cc.js');
       window.go = this.go;
       if (!this.drawerSelected) go('home');
-      
+      window.onhashchange = this._onhashChange;
   
     })();
   }
   
-  async go(route, subRoute, info) {
+  _onhashChange() {
+    const hash = location.hash;
+    const slices = hash.split('/');
+    console.log(slices);
+    if (slices.length > 1) {
+      const selected = slices[slices.length - 1];
+      console.log(selected);
+      if (selected !== this.drawerSelected) {        
+        this.pageController._nav.dispatchEvent(new CustomEvent('selected', { detail: selected }));
+      }
+    }
+  }
+  
+  async go(route, info) {
+    let hash = route;
+    if (info) {
+      hash = `${info}/${route}`;
+    }
+    window.location.hash = `!/${hash}`;
+    
     if (route === 'home') return
+    
     const has = await customElements.get(`${route}-section`);
     try {
       if (!has) await import(`./${route}.js`);
     } catch (e) {
       console.error(e);
-    } finally {
-      
     }
-    console.log(has);
   }
   
 });

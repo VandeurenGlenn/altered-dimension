@@ -5,6 +5,8 @@
     <title>The Altered Dimension</title>
 
     <style>
+    
+      @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
       html, body {
         position: absolute;
         top: 0;
@@ -20,7 +22,7 @@
         margin: 0;
         color: #fff;
         background-position: center;
-        font-family: sans-serif;
+        font-family: 'Roboto', 'Noto', sans-serif;
         -webkit-font-smoothing: antialiased;
         --custom-drawer-color: #fff;
         --custom-input-background: #cd7513;
@@ -271,7 +273,7 @@
         flex-direction: row;
         align-items: center;
         box-sizing: border-box;
-        padding: 12px;
+        padding: 8px 16px;
         text-transform: uppercase;
         cursor: pointer;
       }
@@ -291,8 +293,11 @@
       .base {
         align-items: baseline;
       }
+      .selection:not([custom-submenu]) {
+        height: 48px;
+      }
     </style>
-  <link rel="modulepreload" href="selector-mixin-a6a7b665.js"><link rel="modulepreload" href="custom-svg-iconset-01f346e8.js"><link rel="modulepreload" href="custom-svg-icon-b3b9700f.js"><link rel="modulepreload" href="custom-drawer-b43c6f3e.js"><link rel="modulepreload" href="custom-page-controller-4a2d44bb.js"></head>
+  <link rel="modulepreload" href="selector-mixin-a6a7b665.js"><link rel="modulepreload" href="custom-svg-iconset-01f346e8.js"><link rel="modulepreload" href="custom-svg-icon-b3b9700f.js"><link rel="modulepreload" href="custom-drawer-b43c6f3e.js"><link rel="modulepreload" href="custom-page-controller-dbb204cc.js"></head>
   <body>
     <altered-app>
       <custom-svg-icon icon="menu" class="drawer-menu-icon"></custom-svg-icon>
@@ -318,12 +323,13 @@
           
           <span class="selection" data-route="games" href="#services" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>games</span>
           
-          <span class="selection" data-route="vr-arcade" href="#vr-arcade" sub-menu-item="games" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>vr arcade</span>
+          <span class="selection" data-route="vr-arcade" href="#vr-arcade" data-route-info="games" sub-menu-item="games" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>vr arcade</span>
           
-          <span class="selection" data-route="arizona-sunshine" href="#vr-arcade" in-custom-submenu="" sub-menu-item="vr-arcade">arizona sunshine</span>
+          <span class="selection" data-route="arizona-sunshine" data-route-info="games/vr-arcade" href="#vr-arcade" in-custom-submenu="" sub-menu-item="vr-arcade">arizona sunshine</span>
           
-          <span class="selection" data-route="vr-laser" href="#vr-laser" sub-menu-item="games" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>vr laser</span>
-          <span class="selection" data-route="tower-tag" href="#tower-tag" in-custom-submenu="" sub-menu-item="vr-laser">tower tag</span>
+          <span class="selection" data-route="vr-laser" data-route-info="games" href="#vr-laser" sub-menu-item="games" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>vr laser</span>
+          
+          <span class="selection" data-route="tower-tag" data-route-info="games/vr-laser" href="#tower-tag" in-custom-submenu="" sub-menu-item="vr-laser">tower tag</span>
           
           <span class="selection" data-route="services" href="#services">services</span>
           
@@ -454,9 +460,9 @@
           <custom-divider style="border-bottom: 5px solid #3366CC;"></custom-divider>
           <span class="column" style="text-align: right; padding: 0 16px;">
             <span class="row base">
-              <h1 style="font-size:80px;">V</h1>
+              <h1 style="font-size: 64px;">V</h1>
               <h1 style="text-transform: lowercase; text-align: center;">irtual</h1>
-              <h1 style="padding-left: 16px; font-size:80px;">R</h1>
+              <h1 style="padding-left: 16px; font-size: 64px;">R</h1>
               <h1 style="text-transform: lowercase; text-align: center;">eality</h1>
             </span>
             <h4>thealtereddimension.be</h4>

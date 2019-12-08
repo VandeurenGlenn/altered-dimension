@@ -14,15 +14,16 @@ var towerTag = customElements.define('tower-tag-section', class TowerTagSection 
       .img {
         height: 50%;
       }
+      h1 {
+        padding-top: 8px;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
       span {
-        padding: 46px;
+        overflow: scroll;
         box-sizing: border-box;
         background: #000000d1;
-        // max-width: 640px;
-        // position: absolute;
-        // left: 50%;
-        // top: 50%;
-        // transform: translate(-50%, -50%)
       }
       @media (max-width: 960px) {
         span {
@@ -31,12 +32,20 @@ var towerTag = customElements.define('tower-tag-section', class TowerTagSection 
       }
       @media (max-width: 640px) {
         
-        .img {
-          height: 30%;
+        h1 {
+          padding-left: 16px;
+        }
+        span {
+          padding: 0 16px;
         }
       }
+      .img {
+        max-height: 364px;
+      }
     </style>
+    <custom-container>
     <img src="tower-tag.png" class="img"></img>
+    <h1>Tower Tag</h1>
     <span>
     <p>Tower Tag is een Virtual Reality Laser game dat gespeeld word rond een obelisk.</p>
     <p>De obilisk staat in het spel en in de echte wereld.</p>
@@ -48,7 +57,8 @@ gevoel uit game.</p>
 
 <p>Kom je de wereld van Tower Tag domineren?
  </p>
-    </span>`
+    </span>
+    </custom-container>`
   }
 });
 
