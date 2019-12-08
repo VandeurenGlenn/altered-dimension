@@ -1,3 +1,6 @@
+import './altered-footer-8cf33f48.js';
+import './custom-item-grid-a949881c.js';
+
 customElements.define('summary-panel', class SummaryPanel extends HTMLElement {
   constructor() {
     super();
@@ -77,7 +80,7 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
       }
       
       custom-container {
-        overflow: scroll;
+        overflow-y: scroll;
       }
       
       custom-container > * {
@@ -85,15 +88,6 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
       }
       summary-panel {
         min-height: auto;
-      }
-      .game {
-        position: relative;
-        align-items: center;
-        box-sizing: border-box;
-        display: flex;
-        width: 33%;
-        flex-direction: column;
-        // padding: 6px;
       }
       @media (max-width: 1200px) {
         img {
@@ -108,9 +102,6 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
         }
         .games {
           padding: 16px;
-        }
-        .game {
-          width: 50%;
         }
       }
       @media (max-width: 960px) {
@@ -129,24 +120,10 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
           flex-direction: column;
         }
       }
-      .game-container {
-        width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-      }
-      .game img {
-        width: 100%;
-    max-width: 100%;
-      }
-      .game .title {
-        position: absolute;
-        top: 0;
-        left: 6px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.52);
-        padding: 6px;
+      altered-footer {
         box-sizing: border-box;
+        max-width: 100% !important;
+        width: 100%;
       }
     </style>
     <custom-container>
@@ -161,21 +138,26 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
       </summary-panel>
       
       <span class="games">
-        <span class="game-container">
-          <span class="game">
-            <h2 class="title">Arizona Sunshine</h2>
-            <img src="arizona-sunshine_thumb_360.jpg"></img>
-          </span>
-          <span class="game">
-          <h2 class="title">Arizona Sunshine</h2>
-            <img src="arizona-sunshine_thumb_360.jpg"></img>
-          </span>
-          <span class="game">
-            <h2 class="title">Arizona Sunshine</h2>
-            <img src="arizona-sunshine_thumb_360.jpg"></img>
-          </span>
-        </span>
+        <custom-item-grid>
+          <custom-grid-item>
+            <h2 slot="title">Arizona Sunshine</h2>
+            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+          </custom-grid-item>
+          <custom-grid-item>
+          <h2 slot="title">Arizona Sunshine</h2>
+            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+          </custom-grid-item>
+          <custom-grid-item>
+            <h2 slot="title">Arizona Sunshine</h2>
+            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+          </custom-grid-item>
+          <custom-grid-item>
+            <h2 slot="title">More Comming Soon</h2>
+          </custom-grid-item>
+        </custom-item-grid>
       </span>
+      <custom-space></custom-space>
+      <altered-footer></altered-footer>
     </custom-container>
     `;
   }

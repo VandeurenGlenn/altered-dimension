@@ -1,3 +1,4 @@
+import './altered-footer-8cf33f48.js';
 import { S as SelectorMixin } from './selector-mixin-a6a7b665.js';
 
 customElements.define('custom-logo', class CustomLogo extends HTMLElement {
@@ -505,18 +506,23 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
   
   connectedCallback() {
     if (super.connectedCallback) super.connectedCallback();
-    this.addEventListener('mouseup', event => {
+    this.addEventListener('click', event => {
       if (event.srcElement.hasAttribute('custom-submenu')) return;
-      if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
-      else this.setAttribute('drawer-open', '');
+      if (this.hasAttribute('drawer-open')) {
+        this.removeAttribute('drawer-open');
+        event.preventDefault();
+        event.stopPropagation();
+      }
     });
-    this.drawer.addEventListener('click', event => {
+    this.drawer.addEventListener('mousedown', event => {
       if (event.srcElement.hasAttribute('custom-submenu')) return;
       if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
       else this.setAttribute('drawer-open', '');
     });
     
-    this.drawerToggle.addEventListener('click', () => {
+    this.drawerToggle.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
       if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
       else this.setAttribute('drawer-open', '');
     });

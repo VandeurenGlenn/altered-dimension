@@ -21,7 +21,7 @@ var towerTag = customElements.define('tower-tag-section', class TowerTagSection 
         box-sizing: border-box;
       }
       span {
-        overflow: scroll;
+        overflow-y: auto;
         box-sizing: border-box;
         background: #000000d1;
       }

@@ -11,6 +11,7 @@ var arizonaSunshine = customElements.define('arizona-sunshine-section', class Ar
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+        overflow: hidden;
       }
       h1 {
         padding-top: 8px;
@@ -22,7 +23,7 @@ var arizonaSunshine = customElements.define('arizona-sunshine-section', class Ar
         height: 50%;
       }
       span {
-        overflow: scroll;
+        overflow-y: auto;
         box-sizing: border-box;
         background: #000000d1;
       }
