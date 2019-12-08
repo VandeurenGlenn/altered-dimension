@@ -1,44 +1,4 @@
-import './altered-footer-8cf33f48.js';
-import './custom-item-grid-a949881c.js';
-
-customElements.define('summary-panel', class SummaryPanel extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot.innerHTML = this.template;
-  }
-
-  get template() {
-    return `
-<style>
-  :host {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 400px;
-    max-width: 1200px;
-  }
-  ::slotted([slot="left"]) {
-    padding-bottom: 24px;
-  }
-  @media(min-width: 1200px) {
-    :host {
-      flex-direction: row;
-      width: 80%;
-    }
-    ::slotted([slot="left"]) {
-      padding-right: 24px;
-      padding-bottom: 0;
-    }
-  }
-</style>
-<slot name="left"></slot>
-<slot name="right"></slot>
-    `;
-  }
-});
-
-var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection extends HTMLElement {
+var vrLaser = customElements.define('vr-laser-section', class VrLaserSection extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode: 'open'});
@@ -48,20 +8,20 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
     return this.shadowRoot.querySelector('custom-item-grid')
   }
   connectedCallback() {
-    const arcades = [
+    const lasers = [
       {
-        title: 'Arizona Sunshine',
-        img: 'arizona-sunshine_thumb_360.jpg',
-        route: 'arizona-sunshine'
+        title: 'Tower Tag',
+        img: 'tower-tag_thumb_360.jpg',
+        route: 'tower-tag'
       },
       {
-        title: 'Arizona Sunshine',
-        img: 'arizona-sunshine_thumb_360.jpg',
-        route: 'arizona-sunshine'
+        title: 'Tower Tag',
+        img: 'tower-tag_thumb_360.jpg',
+        route: 'tower-tag'
       }
     ];
     
-    this.setupGrid(this.grid, arcades, 'games/vr-arcade');
+    this.setupGrid(this.grid, lasers, 'games/vr-laser');
   }
   setupGrid(grid, items, info) {
     for (const item of items) {
@@ -160,27 +120,26 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
     <custom-container>
       
       <summary-panel>
-        <img src="vr.png" slot="left"></img>
+        <img src="tower-tag.png" slot="left"></img>
         <span class="column" slot="right">
-        <h1>VR Arcade</h1>
-          <p>In het arcade deel van ons assortiment kan je spelletjes spelen voor jong en oud.</p>
-          <p>Gaande van Beat saber, klimmen op snoep, zombies schieten,... voor ieder wat wils</p>
+        <h1>VR Laser</h1>
+          <p>In het arcade deel van ons assortiment team je up met je vrienden/collega's/family of eender wie.</p>
         </span>
       </summary-panel>
       
       <span class="games">
         <custom-item-grid>
-          <custom-grid-item>
-            <h2 slot="title">Arizona Sunshine</h2>
-            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+          <custom-grid-item data-route="tower-tag" data-route-info="games/vr-laser">
+            <h2 slot="title">Tower Tag</h2>
+            <img slot="img" src="tower-tag_thumb_360.jpg"></img>
           </custom-grid-item>
-          <custom-grid-item>
-          <h2 slot="title">Arizona Sunshine</h2>
-            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+          <custom-grid-item data-route="tower-tag" data-route-info="games/vr-laser">
+          <h2 slot="title">Tower Tag</h2>
+            <img slot="img" src="tower-tag_thumb_360.jpg"></img>
           </custom-grid-item>
-          <custom-grid-item>
-            <h2 slot="title">Arizona Sunshine</h2>
-            <img slot="img" src="arizona-sunshine_thumb_360.jpg"></img>
+          <custom-grid-item data-route="tower-tag" data-route-info="games/vr-laser">
+            <h2 slot="title">Tower Tag</h2>
+            <img slot="img" src="tower-tag_thumb_360.jpg"></img>
           </custom-grid-item>
           <custom-grid-item>
             <h2 slot="title">More Comming Soon</h2>
@@ -194,4 +153,4 @@ var vrArcade = customElements.define('vr-arcade-section', class VrArcadeSection 
   }
 });
 
-export default vrArcade;
+export default vrLaser;

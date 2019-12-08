@@ -507,18 +507,27 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
   connectedCallback() {
     if (super.connectedCallback) super.connectedCallback();
     this.addEventListener('click', event => {
+      if (event.srcElement.hasAttribute('data-route')) {
+        const route = event.srcElement.getAttribute('data-route');
+        if (route === 'route') {
+          const url = "https://www.google.com/maps/dir//The+Altered+Dimension/";
+          window.open(url);
+          event.stopPropagation();
+        }
+      }
+      
       if (event.srcElement.hasAttribute('custom-submenu')) return;
       if (this.hasAttribute('drawer-open')) {
         this.removeAttribute('drawer-open');
-        event.preventDefault();
-        event.stopPropagation();
+        // event.preventDefault()
+        // event.stopPropagation()
       }
     });
-    this.drawer.addEventListener('mousedown', event => {
-      if (event.srcElement.hasAttribute('custom-submenu')) return;
-      if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
-      else this.setAttribute('drawer-open', '');
-    });
+    // this.drawer.addEventListener('mousedown', event => {
+    //   if (event.srcElement.hasAttribute('custom-submenu')) return;
+    //   if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open')
+    //   else this.setAttribute('drawer-open', '');
+    // });
     
     this.drawerToggle.addEventListener('click', event => {
       event.preventDefault();
@@ -530,7 +539,7 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
     (async () => {
       await import('./custom-drawer-b43c6f3e.js');
       // await customElements.whenDefined('custom-drawer')
-      await import('./custom-page-controller-dbb204cc.js');
+      await import('./custom-page-controller-491a85e8.js');
       window.go = this.go;
       if (!this.drawerSelected) go('home');
       window.onhashchange = this._onhashChange;
@@ -541,7 +550,6 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
   _onhashChange() {
     const hash = location.hash;
     const slices = hash.split('/');
-    console.log(slices);
     if (slices.length > 1) {
       const selected = slices[slices.length - 1];
       console.log(selected);
