@@ -505,7 +505,7 @@ var app = customElements.define('altered-app', class AlteredApp extends HTMLElem
   
   connectedCallback() {
     if (super.connectedCallback) super.connectedCallback();
-    this.addEventListener('mouse-up', event => {
+    this.addEventListener('mouseup', event => {
       if (event.srcElement.hasAttribute('custom-submenu')) return;
       if (this.hasAttribute('drawer-open')) this.removeAttribute('drawer-open');
       else this.setAttribute('drawer-open', '');
