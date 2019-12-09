@@ -1,4 +1,4 @@
-import './altered-footer-8cf33f48.js';
+import './altered-footer-28e738be.js';
 import './custom-item-grid-a949881c.js';
 
 customElements.define('summary-panel', class SummaryPanel extends HTMLElement {

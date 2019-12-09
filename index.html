@@ -14,6 +14,7 @@
         bottom: 0;
         right: 0;
         overflow: hidden;
+        pointer-events: none;
       }
       html {
         background: #000;
@@ -37,7 +38,7 @@
         left: 0;
         right: 0; */
       }
-      header, section {
+      section {
         background: #000;
       }
       .flex {
@@ -168,9 +169,14 @@
         width: 140px;
         height: 140px;
       }
+      custom-pages > * {
+        padding-top: 52px;
+        box-sizing: border-box;
+      }
       custom-pages {
         position: absolute;
-        top: 64px;
+        /* padding-top: 64px; */
+        top:0;
         bottom: 0;
         left: 0;
         right: 0;
@@ -268,6 +274,10 @@
         padding: 8px 16px;
         text-transform: uppercase;
         cursor: pointer;
+        pointer-events: auto;
+      }
+      .selection * {
+        pointer-events: none;
       }
       custom-svg-icon {
         pointer-events: none;
@@ -290,6 +300,14 @@
       }
       custom-menu {
         height: 100%;
+      }
+      section[data-route="home"] {
+        --custom-space: 15%;
+      }
+      @media (max-width: 640px) {
+        section[data-route="home"] {
+          --custom-space: 24%;
+        }
       }
     </style>
   <link rel="modulepreload" href="selector-mixin-a6a7b665.js"><link rel="modulepreload" href="custom-svg-iconset-01f346e8.js"><link rel="modulepreload" href="custom-svg-icon-b3b9700f.js"><link rel="modulepreload" href="custom-drawer-b43c6f3e.js"><link rel="modulepreload" href="custom-page-controller-491a85e8.js"></head>
@@ -322,6 +340,10 @@
           
           <span class="selection" data-route="contact" sub-menu-item="info">contact</span>
           
+          <span class="selection" data-route="what-is-vr" sub-menu-item="info">wat is vr?</span>
+          
+          <span class="selection" data-route="price" sub-menu-item="info">price</span>
+          
           <span class="selection" data-route="games" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>games</span>
           
           <span class="selection" data-route="vr-arcade" data-route-info="games" sub-menu-item="games" custom-submenu=""><custom-svg-icon icon="chevron-right"></custom-svg-icon>vr arcade</span>
@@ -343,7 +365,7 @@
         </custom-menu>
       </custom-drawer>
       <custom-pages attr-for-selected="data-route">
-        <section data-route="home" class="column" style="height: 100%;">
+        <section data-route="home" class="column" style="height: 100%; padding-top: 52px;">
           <custom-container style="overflow-y: auto;">
             <span class="column column1 center-center" style="max-width: 640px !important; min-height:640px;">
               <!-- <h2>Virtual reality</h2> -->
@@ -366,11 +388,23 @@
         </section>
         
         <arizona-sunshine-section data-route="arizona-sunshine"></arizona-sunshine-section>
+        
         <vr-arcade-section data-route="vr-arcade"></vr-arcade-section>
+        
         <vr-laser-section data-route="vr-laser"></vr-laser-section>
         
         <tower-tag-section data-route="tower-tag"></tower-tag-section>
+        
         <games-section data-route="games"></games-section>
+        
+        <team-building-section data-route="team-building"></team-building-section>
+        
+        <what-is-vr-section data-route="what-is-vr"></what-is-vr-section>
+        
+        <price-section data-route="price"></price-section>
+        
+        <birthday-parties-section data-route="birthday-parties"></birthday-parties-section>
+        
         <section data-route="location-information">
           <iframe width="600" height="100%" src="https://maps.google.com/maps?q=The+Altered+Dimension&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </section>

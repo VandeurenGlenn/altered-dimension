@@ -1,4 +1,4 @@
-import './altered-footer-8cf33f48.js';
+import './altered-footer-28e738be.js';
 import { S as SelectorMixin } from './selector-mixin-a6a7b665.js';
 
 customElements.define('custom-logo', class CustomLogo extends HTMLElement {
