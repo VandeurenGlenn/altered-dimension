@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style media="screen">
+      * {
+        box-sizing: border-box;
+      }
+      html, body {      
+        background: black;
+        height: 100%;
+      }
+      body {
+        --svg-icon-color: #fff;
+        --svg-icon-size: 32px;
+        opacity: 0;
+      }
+      html, body, app-shell {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      body {
+        margin: 0;
+      }
+      img, iframe {
+        border-radius: 40px;
+      }
+      app-header {
+        /* padding: 24px 0; */
+        box-sizing: border-box;
+      }
+      iframe {
+        border: none;
+        width: 100%;
+        max-height: 960px;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .center {
+        align-items: center;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+          box-sizing: border-box;
+      }
+      .flex {
+        flex: 1;
+      }
+      .flex-2 {
+        flex: 2;
+      }
+      .categories {
+        width: 100%;
+        flex-flow: row wrap;
+        justify-content: space-between !important;
+        padding-top: 36px;
+      }
+      .categories img {
+        border-radius: 60px;
+      }
+      .categories .column, .be .column {
+        box-sizing: border-box;
+        max-width: 260px;
+        min-height: 380px;
+      }
+      .be .column {
+        align-items: center;
+        justify-content: center;
+        max-width: 320px;
+      }
+      .be .column button {
+        min-width: 132px;
+      }
+      .be {
+        padding-top: 24px;
+      }
+      .be h2 {
+        margin: 0;
+      }
+      .be .mobile {
+        flex-flow: row wrap;
+        justify-content: space-around;
+      }
+      .laser {
+        /* background: url('https://static.wixstatic.com/media/faec45_66a8f1b7f44c436fa0f65bf17f526b2c~mv2_d_4608_2112_s_2.jpg'); */
+        /* height: 500px;
+        width: 960px; */
+        max-width: 960px;
+        max-height: 500px;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      [drawer-icon] {
+        /* opacity: 0; */
+        /* position: absolute;
+        left: 12px;
+        top: 12px; */
+        
+        --svg-icon-size: 42px;
+        
+        z-index: 101;
+        pointer-events: none;
+      }
+      app-navigation {
+        align-items: center;
+        color: #ddd;
+        padding: 12px;
+        height: 48px;
+        z-index: 100;
+      }
+      button {
+        background: #063F5E;
+        border-radius: 120px;
+        height: 43px;
+        border-color: #00D0FF;
+        color: #eee;
+        outline: none;
+        cursor: pointer;
+        user-select: none;
+      }
+      .logo {
+        border-radius: 0;
+      }
+      .maps {        
+        padding: 12px;
+        min-height: 440px;
+      }
+      footer {
+        background: #CC7512;
+        width: 100%;
+        max-width: 100% !important;
+      }
+      section.row {
+        justify-content: center;
+      }
+      @media (max-width: 960px) {
+        .row.mobile {
+          flex-flow: row wrap !important;
+          justify-content: space-around !important;
+        }
+        
+        app-header img.mobile {
+          opacity: 0;
+          width: 0;
+        }
+        
+        app-header [slot="top"] {
+          justify-content: center;
+          align-items: center;
+        }
+        [drawer-icon] {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        app-navigation {
+          padding-top: 56px;
+          flex-direction: column;
+          position: fixed;
+          height: fit-content;
+          width: 240px;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          transform: translateX(-105%);
+          z-index: 100;
+        }
+        
+        app-navigation[opened] {
+          transform: translateX(0);
+        }
+        
+        section.row summary {
+          max-width: 500px;
+        }
+        
+      }
+      @media (min-width: 960px) {
+        
+        iframe {
+          min-height: 348px;
+        }
+        
+        custom-container, iframe {
+          max-width: 960px;
+          width: 100%;
+        }
+      }
+      .hidden {
+        padding: 0 !important;
+        opacity: 0;
+        height: 0;
+        pointer-events: none;
+        margin: 0;
+      }
+      
+      section, footer {
+        
+        color: #ddd;
+      }
+      
+      footer {
+        align-items: center;
+      }
+      
+      summary {
+        padding-left: 24px;
+      }
+      
+      @media (max-width: 860px) {
+        footer, section.row {
+          flex-direction: column !important;
+        }
+        section.row img {
+          max-width: 480px;
+        }
+        section.row {   
+          padding-top: 24px;      
+          align-items: center;
+        }
+        
+        img {
+          width: 220px;
+        }
+      }
+      
+      section {
+        padding: 24px;
+        background: rgba(6, 63, 94, 0.25);
+        border-radius: 40px;
+        margin-top: 24px;
+      }
+      
+      section.column {
+        padding: 24px;
+      }
+      .maps {
+        margin-top: 24px;
+      }
+      .overlay {
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: url("vr.svg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .glass {
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        /* border: 44px solid #000; */
+        border-right: 10px solid #000;        
+        border-top: 10px solid #000;
+        
+        border-radius: 50px;
+      }
+      .right {
+        /* border: 44px solid #000; */
+        border-top: 10px solid #000;
+        border-left: 10px solid #000;
+        right: 0;
+        border-radius: 50px;
+      }
+      .accent.left {
+        
+      }
+    </style>
+  </head>
+  <script>
+    const onload = () => {
+      document.body.style.opacity = 1;
+      document.querySelector('iframe').src= "https://player.vimeo.com/video/39252414?autoplay=1&loop=1&title=0&byline=0&portrait=0";
+      document.querySelector('.maps').src= "https://maps.google.com/maps?q=thealtereddimension&t=&z=17&ie=UTF8&iwloc=&output=embed";
+    }
+  </script>
+  <body onload="onload()">
+    <custom-svg-iconset style="opacity: 0;">
+      <defs>
+        <svg>
+          <g id="menu"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></g>
+        </svg>
+      </defs>
+    </custom-svg-iconset>
+    <app-shell>
+      <app-header>
+        <custom-svg-icon slot="top" icon="menu" drawer-icon></custom-svg-icon>
+        <br slot="top">
+        <br slot="top">
+        
+        <span class="row center" slot="top">
+          <!-- <app-logo slot="top"></app-logo> -->
+          <img src="https://static.wixstatic.com/media/faec45_542ae23e64fb4a0b8c37fbbd9c5b612a~mv2.png/v1/fill/w_300,h_40,al_c,q_85,usm_0.66_1.00_0.01/snow1.webp" class="mobile"></img>
+          <img class="logo" src="https://static.wixstatic.com/media/faec45_8ea85f8074f248e9ad73d4a9f6b69aa5~mv2.png/v1/fill/w_340,h_139,al_c,q_85,usm_0.66_1.00_0.01/logo%20wit%20zonderachtergrond.webp"></img>
+          <img src="https://static.wixstatic.com/media/faec45_542ae23e64fb4a0b8c37fbbd9c5b612a~mv2.png/v1/fill/w_300,h_40,al_c,q_85,usm_0.66_1.00_0.01/snow1.webp" alt="" class="mobile">
+          
+        </span>
+        
+        <br slot="bottom">
+        <br slot="bottom">
+          <!-- <app-navigation slot="bottom">
+            <app-nav-item href="#!/home" class="flex">home</app-nav-item>
+            <app-nav-item href="#!/why-vr" class="flex-2">waarom vr</app-nav-item>
+            <app-nav-item href="#!/games" class="flex-2">game gallery</app-nav-item>
+            <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item>
+            <app-nav-item href="#!/contact" class="flex-2">contact</app-nav-item>
+            <app-nav-item href="#!/about" class="flex">about</app-nav-item>
+          </app-navigation> -->
+        
+      </app-header>
+      <section data-route="home" class="column">
+      
+      <!-- <iframe slot="bottom" src="" height="440px" width="" controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        <div slot="bottom" style="background: black;border-radius: 40px;overflow: hidden;padding:36.25% 0 0 0;position:relative;pointer-events:none;">
+          
+          <iframe src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+          <span class="overlay">
+            <!-- <span class="accent left"></span>
+            <span class="glass"></span>
+            
+            <span class="glass right"></span> -->
+          </span>
+        </div>
+        <section class="categories row mobile">
+          <span class="column">
+            <img src="https://static.wixstatic.com/media/faec45_88c3aa6c0f9b4b9189442fd83048c84a~mv2.jpeg/v1/crop/x_176,y_0,w_1543,h_879/fill/w_309,h_172,al_c,q_80,usm_0.66_1.00_0.01/WhatsApp%20Image%202019-11-16%20at%2021_38_06_jp.webp"></img>
+            <br>
+            <button>VR Arcade</button>
+            <p>
+              Beleef een onvergetelijk avontuur in één van de virtuele werelden! Ga op pad en verken de mooiste of de meest gestoorde werelden die te verkennen zijn in Virtual Reality.
+            </p>
+          </span>
+          
+          <span class="column">
+            <img src="https://static.wixstatic.com/media/faec45_b5bfe29a4d234dfc98d6a6e36365d110~mv2.png/v1/crop/x_196,y_102,w_663,h_450/fill/w_266,h_176,al_c,q_85,usm_0.66_1.00_0.01/escape.webp" alt="">
+            <br>
+            <button>VR Escape</button>
+            <p>
+            Alleen of met vrienden! Geraak jij op tijd uit onze Virtual Reality escape rooms? 
+            </p>
+          </span>
+          
+          <span class="column">
+            <img src="https://static.wixstatic.com/media/faec45_bc1db88ea8074c8a8e12530435971d30~mv2.png/v1/fill/w_318,h_176,al_c,q_85,usm_0.66_1.00_0.01/TT-Teaser_2018-4-0-00-20-16.webp" alt="">
+            <br>
+            <button>VR Laser</button>
+            <p>
+            Kan jij de eerste plaats claimen? Kom samen met of tegen je vrienden een rondje laser shieten in de vitruele wereld Tower Tag.
+            </p>
+          </span>        
+        </section>
+        
+        <section class="be column">
+          <img class="laser" src="https://static.wixstatic.com/media/faec45_66a8f1b7f44c436fa0f65bf17f526b2c~mv2_d_4608_2112_s_2.jpg" alt="">
+          <br>
+          <span class="row mobile">
+            <span class="column">
+              <h2>Feesten en Events</h2>
+              <p>
+                Virtual Reality Voor jouw feest of event? 
+              </p>
+              
+              <button>Meer info</button>
+            </span>
+            <span class="column">
+              <h2>Verjaardagsfeest</h2>
+              <p>
+                Virtual Reality Verjaardagsfeest? 
+              </p>
+              <button>Meer info</button>
+            </span>  
+          </span>
+        </section>
+        
+        <iframe class="maps"></iframe>
+      </section>
+      
+      <section data-route="why-vr" class="row hidden">
+        <img src="https://static.wixstatic.com/media/faec45_443163f7628241d589acd3d8ccdabf2e~mv2.jpg/v1/fill/w_411,h_271,al_c,q_80,usm_0.66_1.00_0.01/photo-1573511860302-28c524319d2a%20-%20Edite.webp" alt="">
+        <summary>
+          <h2>Waarom kiezen voor Virtual Reality?</h2>
+          
+          <p>
+            Virual Reality staat voor plezier. De ervaring van het ontdekken van nieuwe dingen. Het gevoel van iets voor de eerste keer te beleven. Het laat het kind weer naar boven komen. 
+          </p>
+          <p>
+            Door de wetenschap achter de technologie van VR. is een teambuilding activiteit ontzettend goed voor een bedrijfsuitje een feest of andere events. Het zorgd voor een verhoogd bewust zijn met gevolg voor menselijke interactie gedrag. Waardoor je een betere band krijgt met de mensen rond je. Het biedt de mogelijkheid om op een rustige manier iets aan te brengen wat anders veel lastiger is
+          </p>
+          <p>
+            Het is geschikt om op een leuke manier te werken aan je teamwork skills je creativiteit te boosten en je communicatie skills aan te scherpen.
+          </p>
+        </summary>
+      </section>
+      
+      <games-section data-route="games" class="hidden"></games-section>
+      
+      <about-section data-route="about" class="hidden"></about-section>
+      <contact-section data-route="contact" class="hidden"></contact-section>
+      <footer class="column" slot="footer">
+        <span class="row mobile">
+          <span class="column" style="min-width: 320px;">
+            <h2>The Altered Dimension</h2>
+            <img src=""></img>
+            <a type="button" name="button" href="https://www.google.com/maps/dir//The+Altered+Dimension,+Koning+Albertstraat,+Diest/@50.9862361,4.9833825,12z/">routebeschrijving</a>
+          </span>
+          <span class="column">
+            <!-- <summary>
+              Dit zijn de walk-in uren. 
+            </summary>
+            <summary>Tijdens deze uren kan je met of zonder reservering komen spelen.</summary>
+            <summary>Boekingen kunnen ook voor en na de Walk-in uren.</summary>
+            <summary>Tower Tag en groepen groter dan 4 personen dienen altijd te reserveren.</summary> -->
+            <span class="row mobile">
+              <span class="column" style="width: 100%;">
+                <h2>24/6 - 6/7</h2>
+                <span class="column">
+                  <p>
+                    Wij zijn 24/6 - 6/7 open op reservering.
+                  </p>
+                  <p>Je kan voor elke dag reserveren behalve maandag.</p>
+                </span>
+              </span>
+              <span class="column"  style="width: 100%;">
+                <h2>Walk-In</h2>
+                <span class="row">
+                  <span class="column">
+                    <p>Maandag</p>
+                    <p>Dinsdag</p>
+                    <p>Woensdag</p>
+                    <p>Donderdag</p>
+                    <p>Vrijdagdag</p>
+                    <p>Zaterdag</p>
+                    <p>Zondag</p>
+                  </span>
+                  <span class="column">
+                    <p>Gesloten</p>
+    
+                    <p>16: 00 - 20: 00 </p>
+                    
+                    <p>12: 00 - 20: 00</p>
+                    
+                    <p>16: 00 - 20: 00</p>
+                    
+                    <p>15: 00 - 22: 00</p>
+                    
+                    <p>11: 00 - 22: 00</p>
+                    
+                    <p>11: 00 - 20: 00</p>
+  
+                  </span>
+                </span>
+                  
+              </span>
+            </span>
+          </span>
+        </span>
+      </footer>
+      <app-navigation slot="footer" style="position: fixed; bottom: 0;left: 0;right: 0;">
+        <custom-svg-icon icon="menu" drawer-icon></custom-svg-icon>
+        <app-nav-item href="#!/home" class="flex">home</app-nav-item>
+        <app-nav-item href="#!/why-vr" class="flex-2">waarom vr</app-nav-item>
+        <app-nav-item href="#!/games" class="flex-2">game gallery</app-nav-item>
+        <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item>
+        <app-nav-item href="#!/contact" class="flex-2">contact</app-nav-item>
+        <app-nav-item href="#!/about" class="flex">about</app-nav-item>
+      </app-navigation>
+      
+    </app-shell>
+    <!-- <span style="position: fixed;width:220px;bottom:48px;top:0;left:0;background:#000;z-index:100;">
+      <app-nav-item href="#!/home" class="flex">home</app-nav-item>
+      <app-nav-item href="#!/why-vr" class="flex-2">waarom vr</app-nav-item>
+      <app-nav-item href="#!/games" class="flex-2">game gallery</app-nav-item>
+      <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item>
+      <app-nav-item href="#!/contact" class="flex-2">contact</app-nav-item>
+      <app-nav-item href="#!/about" class="flex">about</app-nav-item>
+    </span> -->
+    <script src="./shell.js" type="module"></script>
+    
+  </body>
+</html>
