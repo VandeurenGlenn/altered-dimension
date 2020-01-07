@@ -153,7 +153,42 @@ export default {
       description: `
       De deugd van het lange zwaard kan tien man verslaan. Je moet deze deugd bereiken in Ninja Legends en de gestolen schaduwrollen terugvinden. Vijanden zullen coöperatieve groepsaanvallen gebruiken om je te omringen en proberen te overmeesteren. Beheers alle wapens en tactieken ...`,
       iframe: 'https://www.youtube.com/watch?v=UqXJnhyE7fQ'
-  ], 'vr escape': [
-  ], 'vr laser': [
+  ], 'vr escape': [{
+      title: 'Ninja Legends.',
+      subtitle: 'Swords and ninjas',
+      multiplayer: false,
+      singleplayer: true,
+      pvp: false,
+      description: `
+      De deugd van het lange zwaard kan tien man verslaan. Je moet deze deugd bereiken in Ninja Legends en de gestolen schaduwrollen terugvinden. Vijanden zullen coöperatieve groepsaanvallen gebruiken om je te omringen en proberen te overmeesteren. Beheers alle wapens en tactieken ...`,
+      iframe: 'https://www.youtube.com/watch?v=UqXJnhyE7fQ'
+  }, {
+      title: 'Ninja Legends.',
+      subtitle: 'Swords and ninjas',
+      multiplayer: false,
+      singleplayer: true,
+      pvp: false,
+      description: `
+      De deugd van het lange zwaard kan tien man verslaan. Je moet deze deugd bereiken in Ninja Legends en de gestolen schaduwrollen terugvinden. Vijanden zullen coöperatieve groepsaanvallen gebruiken om je te omringen en proberen te overmeesteren. Beheers alle wapens en tactieken ...`,
+      iframe: 'https://www.youtube.com/watch?v=UqXJnhyE7fQ'
+  }], 'vr laser': [{
+      title: 'Ninja Legends.',
+      subtitle: 'Swords and ninjas',
+      multiplayer: false,
+      singleplayer: true,
+      pvp: false,
+      description: `
+      De deugd van het lange zwaard kan tien man verslaan. Je moet deze deugd bereiken in Ninja Legends en de gestolen schaduwrollen terugvinden. Vijanden zullen coöperatieve groepsaanvallen gebruiken om je te omringen en proberen te overmeesteren. Beheers alle wapens en tactieken ...`,
+      iframe: 'https://www.youtube.com/watch?v=UqXJnhyE7fQ'
+  }, {
+      title: 'Ninja Legends.',
+      subtitle: 'Swords and ninjas',
+      multiplayer: false,
+      singleplayer: true,
+      pvp: false,
+      description: `
+      De deugd van het lange zwaard kan tien man verslaan. Je moet deze deugd bereiken in Ninja Legends en de gestolen schaduwrollen terugvinden. Vijanden zullen coöperatieve groepsaanvallen gebruiken om je te omringen en proberen te overmeesteren. Beheers alle wapens en tactieken ...`,
+      iframe: 'https://www.youtube.com/watch?v=UqXJnhyE7fQ'
+  }
   ]
 }
