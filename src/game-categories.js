@@ -6,11 +6,17 @@ export default customElements.define('game-categories', class GameCategories ext
     this.attachShadow({mode:'open'})
     this.shadowRoot.innerHTML = this.template
   }
+   
+  connectedCallback() {
+    super.connectedCallback()
+    this.attrForSeclected = 'data-route';
+  }
   get template() {
     return `<style>
       :host {
         display: flex;
         flex-direction: column;
+        width: 100%;
       }
     </style>
     

@@ -9,9 +9,9 @@ export default customElements.define('app-navigation', class AppNavigation exten
       :host {
         display: flex;
         width: 100%;
-        background: #031c2a;
         height: 36px;
         min-height: 36px;
+        color: #ddd;
         // flex-flow: row wrap;
         // justify-content: space-around;
       }

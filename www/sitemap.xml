@@ -1,0 +1,28 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://thealtereddimension.be/</loc>
+  </url>
+  
+  <url>
+    <loc>https://thealtereddimension.be/#!/contact</loc>
+  </url>
+  
+  <url>
+    <loc>https://thealtereddimension.be/#!/events</loc>
+  </url>
+  
+  <url>
+    <loc>https://thealtereddimension.be/#!/about</loc>
+  </url>
+  
+  <url>
+    <loc>https://thealtereddimension.be/#!/why-vr</loc>
+  </url>
+  
+  <url>
+    <loc>https://thealtereddimension.be/#!/games</loc>
+  </url>
+</urlset>

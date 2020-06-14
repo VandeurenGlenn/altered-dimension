@@ -6,16 +6,18 @@ export default customElements.define('contact-section', class ContactSection ext
   }
   get template() {
     return `<style>
+    * {
+      box-sizing: border-box;
+    }
       :host {
-        display: flex;
+        display: block !important;
         flex-direction: column;
-        padding: 24px;
-        margin-top: 24px;
-        margin-bottom: 24px;
+        padding-top: 24px;
         box-sizing: border-box;
-        background: rgba(6, 63, 94, 0.25);
+        align-items: center;
         width: 100%;
         color: #ddd;
+        overflow-y: auto;
       }
       
       input {
@@ -74,12 +76,20 @@ export default customElements.define('contact-section', class ContactSection ext
       .container {
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        padding: 24px;
+        border-radius: 54px;
+        background: rgba(6, 63, 94, 0.25);
+        max-width: 960px;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
       }
       
       iframe {
         border: none;
         min-height: 400px;
+          border-radius: 40px;
       }
       
       section {
@@ -87,9 +97,6 @@ export default customElements.define('contact-section', class ContactSection ext
         background: rgba(6, 63, 94, 0.25);
         border-radius: 40px;
         margin-bottom: 24px;
-      }
-      :host, iframe {
-        border-radius: 40px;
       }
       p {
         margin: 0;
@@ -114,6 +121,7 @@ export default customElements.define('contact-section', class ContactSection ext
         .container {
           display: flex;
           flex-direction: column;
+          padding: 0;
         }
         
         .info:not(.mobile) {
@@ -137,11 +145,11 @@ export default customElements.define('contact-section', class ContactSection ext
       @media (max-width: 560px) {
         textarea {
           height: 200px;
-          border-radius: 20px;
+          border-radius: 40px;
           margin-top: 24px;
         }
         input {
-          border-radius: 20px;
+          border-radius: 40px;
         }
         .mobile {
           flex-direction: column;
@@ -149,54 +157,73 @@ export default customElements.define('contact-section', class ContactSection ext
       }
     </style>    
     
-    <section>
-      <span class="container">
-        <span class="column info">
-          <p><strong>Koning Albertstraat 43, 3290 Diest</strong></p>
-          
-          <p><strong>Info@TheAlteredDimension.com</strong></p>
-          
-          <p><strong>0493/92 02 52</strong></p>
-          
-          <p><strong>facebook</strong></p>
-          
-          <p><strong>instagram</strong></p>
-        </span>
-        <span class="flex"></span>
-        <span class="row mobile">
-          <span class="column" style="height: 140px;">
-            <input placeholder="naam"></input>
+    <span class="container">
+        <section>
+          <span class="column info">
+            <p><strong>Koning Albertstraat 43, 3290 Diest</strong></p>
             
-            <span class="flex"></span>
+            <p><strong>Info@TheAlteredDimension.com</strong></p>
             
-            <input placeholder="email"></input>
+            <p><strong>0493/92 02 52</strong></p>
             
-            <span class="flex"></span>
+            <p><strong>facebook</strong></p>
             
-            <input placeholder="onderwerp"></input>
+            <p><strong>instagram</strong></p>
           </span>
-        
-          <textarea type="textfield" placeholder="bericht"></textarea>
-        </span>
-        
-        <span class="column info mobile">
-          <p><strong>Koning Albertstraat 43, 3290 Diest</strong></p>
+          <span class="flex"></span>
+          <span class="row mobile">
+            <span class="column" style="height: 140px;">
+              <input placeholder="naam"></input>
+              
+              <span class="flex"></span>
+              
+              <input placeholder="email"></input>
+              
+              <span class="flex"></span>
+              
+              <input placeholder="onderwerp"></input>
+            </span>
           
-          <p><strong>Info@TheAlteredDimension.com</strong></p>
+            <textarea type="textfield" placeholder="bericht"></textarea>
+          </span>
           
-          <p><strong>0493/92 02 52</strong></p>
-          
-          <p><strong>facebook</strong></p>
-          
-          <p><strong>instagram</strong></p>
-        </span>
-      </span>
+          <span class="column info mobile">
+            <p><strong>Koning Albertstraat 43, 3290 Diest</strong></p>
+            
+            <p><strong>Info@TheAlteredDimension.com</strong></p>
+            
+            <p><strong>0493/92 02 52</strong></p>
+            
+            <p><strong>facebook</strong></p>
+            
+            <p><strong>instagram</strong></p>
+          </span>
+      
     </section>
-    
-    
       <iframe src="https://maps.google.com/maps?q=thealtereddimension&t=&z=17&ie=UTF8&iwloc=&output=embed" width="100%"></iframe>
-    
-    
+      
+      
+    </span>
+    <altered-footer></altered-footer>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://thealtereddimension.be",
+      "name": "TheAlteredDimension",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "0493/92 02 52",
+        "contactType": "Boeken, algemene info"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Belgium",
+        "addressRegion": "Vlaams-Brabant",
+        "streetAddress": "Koning Albertstraat 43, 3290 Diest"
+      }
+    }
+    </script>
     `
   }
 });

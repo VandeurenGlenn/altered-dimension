@@ -22,12 +22,14 @@ export default customElements.define('app-nav-item', class AppNavItem extends HT
         flex-direction: row;
         width: 100%;
         height: 36px;
-        min-height: 36px;
+        min-height: 40px;
         font-size: 22px;
         font-weight: 800;
+        padding: 24px;
+        box-sizing: border-box;
         text-transform: capitalize;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         cursor: pointer;
       }
       a {

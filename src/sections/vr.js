@@ -22,7 +22,7 @@ export default customElements.define('vr-section', class vrSection extends HTMLE
       <summary>
       
         <h2>The Altered Dimension</h2>
-        <p>The Altered Dimension is geopend sinds 1 december 2019 gelegen in diest in de Koning Albertstraat. Samen met de hardware streven we naar de zo best mogelijke ervaring. Samen met de VR. escape rooms en VR. arcade games bieden we exclusief in Belië Tower Tag aan. Een Virtual Reality laser shoot, genomineerd voor het meest innovatieve en beste game design 2019.</p>
+        <p>The Altered Dimension is geopend sinds 1 december 2019 gelegen in diest in de Koning Albertstraat. Samen met de hardware streven we naar de zo best mogelijke ervaring. Samen met de VR. escape rooms en VR. arcade games bieden we exclusief in België Tower Tag aan. Een Virtual Reality laser shoot, genomineerd voor het meest innovatieve en beste game design 2019.</p>
 
 ​
       </summary>

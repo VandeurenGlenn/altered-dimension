@@ -1,9 +1,138 @@
-<!DOCTYPE html>
-<html lang="nl" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="nl" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>The Altered Dimension</title>
+    <meta name="description" content="The Altered Dimension is geopend sinds 1 december 2019 gelegen te diest in de Koning Albertstraat. Samen met de hardware streven we naar de zo best mogelijke ervaring. Samen met de VR.escape rooms en VR.arcade games bieden we exclusief in België Tower Tag aan. Een Virtual Reality laser shoot, genomineerd voor het meest innovatieve en beste game design 2019. vr in Diest!">
+    <meta name="keywords" content="vr, vr diest, virtual reality diest, altered, dimension, virtual, reality, diest">
+    <meta name="theme-color" content="#063F5E">
+    <meta name="twitter:" content="">
+    <meta name="" content="">
+    <link rel="canonical" href="https://thealtereddimension.be">
+    <link rel="manifest" href="manifest.json">
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "Service",
+        "serviceType": "Virtual reality center",
+        "provider": {
+          "@type": "LocalBusiness",    
+          "priceRange": "average",
+          "image": "https://thealtereddimension.com/altered-logo.png",
+          "telephone": "0493/92 02 52",
+          "name": "The Altered Dimension",
+          "description": "The Altered Dimension is the place to be for having a great time in virtual reality!",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Belgium",
+            "addressRegion": "Vlaams-Brabant",
+            "streetAddress": "Koning Albertstraat 43, 3290 Diest"
+            },  
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "50.986149",
+              "longitude": "5.053422"
+            },
+            "currenciesAccepted": "EUR"
+        	},
+        "areaServed": {
+          "@type": "State",
+          "name": "Vlaams-Brabant"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services and games",
+          "itemListElement": [
+            {
+              "@type": "OfferCatalog",
+              "name": "games",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "price": "16 to 42",
+                  "description": "prices range from 16 to 42",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "VR arcade games"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "price": "16 to 42",
+                  "description": "prices range from 16 to 42",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "VR Escape rooms"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "price": "16 to 42",
+                  "description": "prices range from 16 to 42",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "VR laser tag"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "OfferCatalog",
+              "name": "services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Birthday party"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Teambuilding"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Events"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    </script>
+    <script>
+    const worker = new Worker('./worker.js')
+    worker.onMessage = ev => console.log(ev);
+    if (location.protocol !== 'https:' && location.port.length === 0) location.href = location.href.replace('http:', 'https:')
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+          // registration failed :(
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+    </script>
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57095170-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57095170-6');
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet" preload>
     <style media="screen">
       * {
         box-sizing: border-box;
@@ -15,136 +144,32 @@
       body {
         --svg-icon-color: #fff;
         --svg-icon-size: 32px;
-        opacity: 0;
+        --primary-background: #000;
+        --secundary-background: rgba(6, 63, 94, 0.25);
+        --button-border: #00D0FF;
+        --button-background: #063F5E;
       }
       html, body, app-shell {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
+        font-family: 'Noto Sans', sans-serif;
       }
       body {
         margin: 0;
       }
-      img, iframe {
-        border-radius: 40px;
+      
+      .logo {
+        width: 167px;
+        border-radius: 0;
       }
       app-header {
         /* padding: 24px 0; */
         box-sizing: border-box;
       }
-      iframe {
-        border: none;
-        width: 100%;
-        max-height: 960px;
-        width: 100% !important;
-        height: 100% !important;
-      }
-      .center {
-        align-items: center;
-      }
-      .row {
-        display: flex;
-        flex-direction: row;
-      }
-      .column {
-        display: flex;
-        flex-direction: column;
-        padding: 12px;
-          box-sizing: border-box;
-      }
-      .flex {
-        flex: 1;
-      }
-      .flex-2 {
-        flex: 2;
-      }
-      .categories {
-        width: 100%;
-        flex-flow: row wrap;
-        justify-content: space-between !important;
-        padding-top: 36px;
-      }
-      .categories img {
-        border-radius: 60px;
-      }
-      .categories .column, .be .column {
-        box-sizing: border-box;
-        max-width: 260px;
-        min-height: 380px;
-      }
-      .be .column {
-        align-items: center;
-        justify-content: center;
-        max-width: 320px;
-      }
-      .be .column button {
-        min-width: 132px;
-      }
-      .be {
-        padding-top: 24px;
-      }
-      .be h2 {
-        margin: 0;
-      }
-      .be .mobile {
-        flex-flow: row wrap;
-        justify-content: space-around;
-      }
-      .laser {
-        /* background: url('https://static.wixstatic.com/media/faec45_66a8f1b7f44c436fa0f65bf17f526b2c~mv2_d_4608_2112_s_2.jpg'); */
-        /* height: 500px;
-        width: 960px; */
-        max-width: 960px;
-        max-height: 500px;
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: contain;
-      }
-      [drawer-icon] {
-        /* opacity: 0; */
-        /* position: absolute;
-        left: 12px;
-        top: 12px; */
-        
-        --svg-icon-size: 42px;
-        
-        z-index: 101;
-        pointer-events: none;
-      }
-      app-navigation {
-        align-items: center;
-        color: #ddd;
-        padding: 12px;
-        height: 48px;
-        z-index: 100;
-      }
-      button {
-        background: #063F5E;
-        border-radius: 120px;
-        height: 43px;
-        border-color: #00D0FF;
-        color: #eee;
-        outline: none;
-        cursor: pointer;
-        user-select: none;
-      }
-      .logo {
-        border-radius: 0;
-      }
-      .maps {        
-        padding: 12px;
-        min-height: 440px;
-      }
-      footer {
-        background: #CC7512;
-        width: 100%;
-        max-width: 100% !important;
-      }
-      section.row {
-        justify-content: center;
-      }
+      
       @media (max-width: 960px) {
         .row.mobile {
           flex-flow: row wrap !important;
@@ -160,336 +185,239 @@
           justify-content: center;
           align-items: center;
         }
-        [drawer-icon] {
-          opacity: 1;
-          pointer-events: auto;
-        }
-        app-navigation {
-          padding-top: 56px;
-          flex-direction: column;
-          position: fixed;
-          height: fit-content;
-          width: 240px;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          transform: translateX(-105%);
-          z-index: 100;
-        }
-        
-        app-navigation[opened] {
-          transform: translateX(0);
-        }
-        
-        section.row summary {
-          max-width: 500px;
-        }
-        
-      }
-      @media (min-width: 960px) {
-        
-        iframe {
-          min-height: 348px;
-        }
-        
-        custom-container, iframe {
-          max-width: 960px;
-          width: 100%;
-        }
-      }
-      .hidden {
-        padding: 0 !important;
-        opacity: 0;
-        height: 0;
-        pointer-events: none;
-        margin: 0;
-      }
-      
-      section, footer {
-        
-        color: #ddd;
-      }
-      
-      footer {
-        align-items: center;
-      }
-      
-      summary {
-        padding-left: 24px;
-      }
-      
-      @media (max-width: 860px) {
-        footer, section.row {
-          flex-direction: column !important;
-        }
-        section.row img {
-          max-width: 480px;
-        }
-        section.row {   
-          padding-top: 24px;      
-          align-items: center;
-        }
-        
-        img {
-          width: 220px;
-        }
-      }
-      
-      section {
-        padding: 24px;
-        background: rgba(6, 63, 94, 0.25);
-        border-radius: 40px;
-        margin-top: 24px;
-      }
-      
-      section.column {
-        padding: 24px;
-      }
-      .maps {
-        margin-top: 24px;
-      }
-      .overlay {
-        z-index: 100;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background: url("vr.svg");
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-      .glass {
-        position: absolute;
-        height: 100%;
-        width: 50%;
-        /* border: 44px solid #000; */
-        border-right: 10px solid #000;        
-        border-top: 10px solid #000;
-        
-        border-radius: 50px;
-      }
-      .right {
-        /* border: 44px solid #000; */
-        border-top: 10px solid #000;
-        border-left: 10px solid #000;
-        right: 0;
-        border-radius: 50px;
       }
       .accent.left {
         
       }
+      .center-center {
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .bottom-toolbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-top: 1px solid #ffffff47;
+        background: var(--primary-background);
+        padding: 0 12px;
+        height: 54px;
+      }
+      
+      custom-drawer {
+        top: 0;
+        left: 0;
+        bottom: 54px;
+        pointer-events: auto;
+        z-index: 200;
+        
+        background: #021018;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.14)
+      }
+      custom-drawer [slot="header"] {
+        height: 128px;
+        min-height: 128px;
+        background: #031c2a;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14)
+      }
+      custom-divider {
+        background: #eee;
+      }
+      @media (max-width: 360px) {
+        custom-drawer {
+          right: 0;
+          width: 100%;
+        }
+      }
+      h3 {
+        margin: 0;
+      }
+      
+      .flex {
+        flex: 1;
+      }
+      .fab {
+        position: fixed; bottom: 28px;left: 50%;
+        transform: translateX(-50%);
+        border-radius: 24px;
+        height: 44px;
+        width: 98px;
+        color: #ddd;
+        background: var(--button-background);
+        border-color: var(--button-border);
+        cursor: pointer;
+      }
+      
+      a.nav {
+        box-sizing: border-box;
+        padding: 12px;
+        display: flex;
+        color: #fff;
+        text-transform: capitalize;
+        text-decoration: none;
+        font-size: 13px;
+        min-width: 80px;
+        max-width: 156px;
+        width: 100%;
+        justify-content: center;
+        --svg-icon-size: 24px;
+      }
+      .row {
+        display: flex;
+      }
+      .flex2 {
+        flex: 2;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+      }
+      .center {
+        align-items: center;
+      }
+      .center-center {
+        justify-content: center;
+      }
+      .toolbar {
+        height: 48px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 12px;
+      }
+      @media (max-width: 400px) {
+        a.nav.mobile {
+          min-width: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+        }
+      }
+      
+      @media (min-width: 401px) {
+        app-nav-item[title="feestjes en events"] {
+          opacity: 0;
+          min-height: 0;
+          height: 0;
+          padding: 0;
+          /* display: none; */
+          pointer-events: none;
+        }
+      }
+      
+      @media (min-width: 481px) {
+        [drawer-icon] {
+          opacity: 0
+        }
+      }
+      
+      @media (max-width: 480px) {
+        a.nav.mobile2 {
+          min-width: 0;
+          padding: 0;
+          width: 0;
+          height: 0;
+          opacity: 0;
+          pointer-events: none;
+        }
+      }
     </style>
-  </head>
-  <script>
-    const onload = () => {
-      document.body.style.opacity = 1;
-      document.querySelector('iframe').src= "https://player.vimeo.com/video/39252414?autoplay=1&loop=1&title=0&byline=0&portrait=0";
-      document.querySelector('.maps').src= "https://maps.google.com/maps?q=thealtereddimension&t=&z=17&ie=UTF8&iwloc=&output=embed";
-    }
-  </script>
-  <body onload="onload()">
-    <custom-svg-iconset style="opacity: 0;">
+</head>
+<body>
+  <custom-svg-iconset>
       <defs>
         <svg>
+          <g id="euro-symbol"><path d="M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1 0 .34.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z"></path></g>
+          <g id="event"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"></path></g>
           <g id="menu"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></g>
+          <g id="people"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></g>
+          <g id="person"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></g>
+          <g id="videogame-asset"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path></g>
+          <g id="home"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></g>
+          <g id="info"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path></g>
         </svg>
       </defs>
     </custom-svg-iconset>
     <app-shell>
-      <app-header>
-        <custom-svg-icon slot="top" icon="menu" drawer-icon></custom-svg-icon>
-        <br slot="top">
-        <br slot="top">
-        
-        <span class="row center" slot="top">
-          <!-- <app-logo slot="top"></app-logo> -->
-          <img src="https://static.wixstatic.com/media/faec45_542ae23e64fb4a0b8c37fbbd9c5b612a~mv2.png/v1/fill/w_300,h_40,al_c,q_85,usm_0.66_1.00_0.01/snow1.webp" class="mobile"></img>
-          <img class="logo" src="https://static.wixstatic.com/media/faec45_8ea85f8074f248e9ad73d4a9f6b69aa5~mv2.png/v1/fill/w_340,h_139,al_c,q_85,usm_0.66_1.00_0.01/logo%20wit%20zonderachtergrond.webp"></img>
-          <img src="https://static.wixstatic.com/media/faec45_542ae23e64fb4a0b8c37fbbd9c5b612a~mv2.png/v1/fill/w_300,h_40,al_c,q_85,usm_0.66_1.00_0.01/snow1.webp" alt="" class="mobile">
-          
+      <app-header slot="header">
+        <a href="#!/home" slot="top"><img slot="top" class="logo" src="altered-logo.png" alt="logo"></a>
+        <span class="row toolbar" slot="top">
+          <custom-svg-icon icon="menu" drawer-icon></custom-svg-icon>
+          <span class="flex"></span>
         </span>
-        
-        <br slot="bottom">
-        <br slot="bottom">
-          <!-- <app-navigation slot="bottom">
-            <app-nav-item href="#!/home" class="flex">home</app-nav-item>
-            <app-nav-item href="#!/why-vr" class="flex-2">waarom vr</app-nav-item>
-            <app-nav-item href="#!/games" class="flex-2">game gallery</app-nav-item>
-            <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item>
-            <app-nav-item href="#!/contact" class="flex-2">contact</app-nav-item>
-            <app-nav-item href="#!/about" class="flex">about</app-nav-item>
-          </app-navigation> -->
-        
       </app-header>
-      <section data-route="home" class="column">
-      
-      <!-- <iframe slot="bottom" src="" height="440px" width="" controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-        <div slot="bottom" style="background: black;border-radius: 40px;overflow: hidden;padding:36.25% 0 0 0;position:relative;pointer-events:none;">
-          
-          <iframe src="" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-          <span class="overlay">
-            <!-- <span class="accent left"></span>
-            <span class="glass"></span>
-            
-            <span class="glass right"></span> -->
-          </span>
-        </div>
-        <section class="categories row mobile">
-          <span class="column">
-            <img src="https://static.wixstatic.com/media/faec45_88c3aa6c0f9b4b9189442fd83048c84a~mv2.jpeg/v1/crop/x_176,y_0,w_1543,h_879/fill/w_309,h_172,al_c,q_80,usm_0.66_1.00_0.01/WhatsApp%20Image%202019-11-16%20at%2021_38_06_jp.webp"></img>
-            <br>
-            <button>VR Arcade</button>
-            <p>
-              Beleef een onvergetelijk avontuur in één van de virtuele werelden! Ga op pad en verken de mooiste of de meest gestoorde werelden die te verkennen zijn in Virtual Reality.
-            </p>
-          </span>
-          
-          <span class="column">
-            <img src="https://static.wixstatic.com/media/faec45_b5bfe29a4d234dfc98d6a6e36365d110~mv2.png/v1/crop/x_196,y_102,w_663,h_450/fill/w_266,h_176,al_c,q_85,usm_0.66_1.00_0.01/escape.webp" alt="">
-            <br>
-            <button>VR Escape</button>
-            <p>
-            Alleen of met vrienden! Geraak jij op tijd uit onze Virtual Reality escape rooms? 
-            </p>
-          </span>
-          
-          <span class="column">
-            <img src="https://static.wixstatic.com/media/faec45_bc1db88ea8074c8a8e12530435971d30~mv2.png/v1/fill/w_318,h_176,al_c,q_85,usm_0.66_1.00_0.01/TT-Teaser_2018-4-0-00-20-16.webp" alt="">
-            <br>
-            <button>VR Laser</button>
-            <p>
-            Kan jij de eerste plaats claimen? Kom samen met of tegen je vrienden een rondje laser shieten in de vitruele wereld Tower Tag.
-            </p>
-          </span>        
-        </section>
+      <custom-pages attr-for-selected="data-route" slot="main">
+        <home-section data-route="home" class="column"></home-section>
         
-        <section class="be column">
-          <img class="laser" src="https://static.wixstatic.com/media/faec45_66a8f1b7f44c436fa0f65bf17f526b2c~mv2_d_4608_2112_s_2.jpg" alt="">
-          <br>
-          <span class="row mobile">
-            <span class="column">
-              <h2>Feesten en Events</h2>
-              <p>
-                Virtual Reality Voor jouw feest of event? 
-              </p>
-              
-              <button>Meer info</button>
-            </span>
-            <span class="column">
-              <h2>Verjaardagsfeest</h2>
-              <p>
-                Virtual Reality Verjaardagsfeest? 
-              </p>
-              <button>Meer info</button>
-            </span>  
-          </span>
-        </section>
+        <games-section data-route="games"></games-section>
         
-        <iframe class="maps"></iframe>
-      </section>
-      
-      <section data-route="why-vr" class="row hidden">
-        <img src="https://static.wixstatic.com/media/faec45_443163f7628241d589acd3d8ccdabf2e~mv2.jpg/v1/fill/w_411,h_271,al_c,q_80,usm_0.66_1.00_0.01/photo-1573511860302-28c524319d2a%20-%20Edite.webp" alt="">
-        <summary>
-          <h2>Waarom kiezen voor Virtual Reality?</h2>
-          
-          <p>
-            Virual Reality staat voor plezier. De ervaring van het ontdekken van nieuwe dingen. Het gevoel van iets voor de eerste keer te beleven. Het laat het kind weer naar boven komen. 
-          </p>
-          <p>
-            Door de wetenschap achter de technologie van VR. is een teambuilding activiteit ontzettend goed voor een bedrijfsuitje een feest of andere events. Het zorgd voor een verhoogd bewust zijn met gevolg voor menselijke interactie gedrag. Waardoor je een betere band krijgt met de mensen rond je. Het biedt de mogelijkheid om op een rustige manier iets aan te brengen wat anders veel lastiger is
-          </p>
-          <p>
-            Het is geschikt om op een leuke manier te werken aan je teamwork skills je creativiteit te boosten en je communicatie skills aan te scherpen.
-          </p>
-        </summary>
-      </section>
-      
-      <games-section data-route="games" class="hidden"></games-section>
-      
-      <about-section data-route="about" class="hidden"></about-section>
-      <contact-section data-route="contact" class="hidden"></contact-section>
-      <footer class="column" slot="footer">
-        <span class="row mobile">
-          <span class="column" style="min-width: 320px;">
-            <h2>The Altered Dimension</h2>
-            <img src=""></img>
-            <a type="button" name="button" href="https://www.google.com/maps/dir//The+Altered+Dimension,+Koning+Albertstraat,+Diest/@50.9862361,4.9833825,12z/">routebeschrijving</a>
-          </span>
-          <span class="column">
-            <!-- <summary>
-              Dit zijn de walk-in uren. 
-            </summary>
-            <summary>Tijdens deze uren kan je met of zonder reservering komen spelen.</summary>
-            <summary>Boekingen kunnen ook voor en na de Walk-in uren.</summary>
-            <summary>Tower Tag en groepen groter dan 4 personen dienen altijd te reserveren.</summary> -->
-            <span class="row mobile">
-              <span class="column" style="width: 100%;">
-                <h2>24/6 - 6/7</h2>
-                <span class="column">
-                  <p>
-                    Wij zijn 24/6 - 6/7 open op reservering.
-                  </p>
-                  <p>Je kan voor elke dag reserveren behalve maandag.</p>
-                </span>
-              </span>
-              <span class="column"  style="width: 100%;">
-                <h2>Walk-In</h2>
-                <span class="row">
-                  <span class="column">
-                    <p>Maandag</p>
-                    <p>Dinsdag</p>
-                    <p>Woensdag</p>
-                    <p>Donderdag</p>
-                    <p>Vrijdagdag</p>
-                    <p>Zaterdag</p>
-                    <p>Zondag</p>
-                  </span>
-                  <span class="column">
-                    <p>Gesloten</p>
-    
-                    <p>16: 00 - 20: 00 </p>
-                    
-                    <p>12: 00 - 20: 00</p>
-                    
-                    <p>16: 00 - 20: 00</p>
-                    
-                    <p>15: 00 - 22: 00</p>
-                    
-                    <p>11: 00 - 22: 00</p>
-                    
-                    <p>11: 00 - 20: 00</p>
-  
-                  </span>
-                </span>
-                  
-              </span>
-            </span>
-          </span>
+        <about-section data-route="about"></about-section>
+        
+        <contact-section data-route="contact"></contact-section>
+        
+        <why-vr-section data-route="why-vr"></why-vr-section>
+        
+        <events-section data-route="events"></events-section>
+        
+        <info-section data-route="info"></info-section>
+        
+      </custom-pages>
+      <custom-drawer slot="drawer">
+        <span slot="header" class="column" style="align-items: baseline;">
+          <span class="flex"></span>
+          <h3 style="text-align: end;">Menu</h3>
         </span>
-      </footer>
-      <app-navigation slot="footer" style="position: fixed; bottom: 0;left: 0;right: 0;">
-        <custom-svg-icon icon="menu" drawer-icon></custom-svg-icon>
-        <app-nav-item href="#!/home" class="flex">home</app-nav-item>
-        <app-nav-item href="#!/why-vr" class="flex-2">waarom vr</app-nav-item>
-        <app-nav-item href="#!/games" class="flex-2">game gallery</app-nav-item>
-        <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item>
-        <app-nav-item href="#!/contact" class="flex-2">contact</app-nav-item>
-        <app-nav-item href="#!/about" class="flex">about</app-nav-item>
-      </app-navigation>
+        <app-navigation slot="content" style="height: 100%;padding: 12px 0;">
+          <span class="flex"></span>
+          <app-nav-item href="#!/info" title="info">info</app-nav-item>          
+          <app-nav-item href="#!/events" title="feestjes en events">feestjes</app-nav-item>
+          <!-- <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item> -->
+        </app-navigation>
+      </custom-drawer>
+      
+      <span class="bottom-toolbar" slot="footer" style="position: fixed; bottom: 0;left: 0;right: 0; padding: 0;">
+        <!-- <a href="https://m.facebook.com/services_vertical/book_appointment/?page_id=115867859850993&referrer=primary_cta&referrer_surface=page"><button class="fab">Boeken</button></a> -->
+        
+          
+            
+        <span class="row" style="width: 100%; justify-content: center;">
+          <!-- <a href="#!/games" title="games" class="nav">games</a> -->
+            <a href="#!/home" title="home" class="nav column center-center">
+              <custom-svg-icon icon="home"></custom-svg-icon>
+              home
+            </a>
+          
+            <a href="#!/games" title="games" class="nav column center-center">
+              <custom-svg-icon icon="videogame-asset"></custom-svg-icon>
+              games
+            </a>            
+            
+            <a href="#!/events" title="events" class="nav column center-center mobile">
+              <custom-svg-icon icon="event"></custom-svg-icon>  
+              events
+            </a>
+            
+          <a href="#!/prices" title="prices" class="nav column center-center">
+            <custom-svg-icon icon="euro-symbol"></custom-svg-icon>  
+            prijzen
+          </a>
+          
+          <a href="#!/info" title="info" class="nav column center-center mobile2">
+            <custom-svg-icon icon="info"></custom-svg-icon>  
+            info
+          </a>
+          
+          <a href="#!/appointment" title="appointment" class="nav column center-center">
+            <custom-svg-icon icon="event"></custom-svg-icon>  
+            boek
+          </a>
+          <!-- <span class="flex"></span> -->
+        </span>
+      </span>
       
     </app-shell>
-    <!-- <span style="position: fixed;width:220px;bottom:48px;top:0;left:0;background:#000;z-index:100;">
-      <app-nav-item href="#!/home" class="flex">home</app-nav-item>
-      <app-nav-item href="#!/why-vr" class="flex-2">waarom vr</app-nav-item>
-      <app-nav-item href="#!/games" class="flex-2">game gallery</app-nav-item>
-      <app-nav-item href="#!/vr" class="flex-2">virtual reality</app-nav-item>
-      <app-nav-item href="#!/contact" class="flex-2">contact</app-nav-item>
-      <app-nav-item href="#!/about" class="flex">about</app-nav-item>
-    </span> -->
-    <script src="./shell.js" type="module"></script>
     
-  </body>
-</html>
+    <script src="./shell.js" type="module" preload></script>    
+  
+</body></html>
