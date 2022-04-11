@@ -6,7 +6,9 @@
     "c": "rollup -c",
     "w": "rollup -c -w",
     "b": "browserify www/lfc-api.js -o www/lfc-api.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -36,12 +38,14 @@
     "lfc-api": "^2.12.24",
     "markdown-it": "^10.0.0",
     "marked": "^0.8.2",
-    "rollup-plugin-modulepreload": "^1.2.2"
+    "rollup-plugin-modulepreload": "^1.2.2",
+    "@snyk/protect": "latest"
   },
   "description": "",
   "disco": {
     "entries": [
       "www"
     ]
-  }
+  },
+  "snyk": true
 }
