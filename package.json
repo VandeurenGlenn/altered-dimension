@@ -31,7 +31,7 @@
     "custom-svg-icon": "^0.10.2",
     "custom-svg-iconset": "^0.9.2",
     "custom-tabs": "^0.13.1",
-    "ipfs-http-response": "^0.5.0",
+    "ipfs-http-response": "^6.0.1",
     "ipfs-postmsg-proxy": "^3.1.1",
     "lfc-api": "^2.12.24",
     "markdown-it": "^10.0.0",
