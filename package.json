@@ -34,7 +34,7 @@
     "ipfs-http-response": "^0.5.0",
     "ipfs-postmsg-proxy": "^3.1.1",
     "lfc-api": "^2.12.24",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^13.0.2",
     "marked": "^0.8.2",
     "rollup-plugin-modulepreload": "^1.2.2"
   },
