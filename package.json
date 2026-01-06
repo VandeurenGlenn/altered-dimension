@@ -36,7 +36,7 @@
     "lfc-api": "^2.12.24",
     "markdown-it": "^10.0.0",
     "marked": "^0.8.2",
-    "rollup-plugin-modulepreload": "^1.2.2"
+    "rollup-plugin-modulepreload": "^1.2.3"
   },
   "description": "",
   "disco": {
